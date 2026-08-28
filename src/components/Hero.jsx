@@ -1,118 +1,268 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap, ArrowRight, Sparkles, BookOpen, Users } from 'lucide-react';
+import {
+  GraduationCap,
+  ArrowRight,
+  BookOpen,
+  Users,
+  Code2,
+  UserRound,
+  TrendingUp
+} from 'lucide-react';
 import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 export default function Hero() {
   return (
-    <div className="relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-24 border-b border-navy-800">
-      
-      {/* Background Decorative Tech Grid */}
-      <div className="absolute inset-0 bg-dots-dark opacity-20 pointer-events-none" />
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-academic-600/15 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-[#faf8f5] border-b border-stone-100">
 
+      {/* =========================================================
+          MAIN HERO
+      ========================================================== */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
-          {/* Left Column: Required Content (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            
-            {/* Top Badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-academic-500/20 text-academic-300 border border-academic-400/30">
-                <GraduationCap className="w-3.5 h-3.5 text-academic-300" />
-                St. Berchmans College, Changanassery
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                FIRST MCA BATCH (2026–2028)
-              </span>
-            </div>
 
-            {/* Main Headline */}
-            <div>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display leading-tight text-white">
-                MASTER OF <br />
-                <span className="text-gradient">COMPUTER APPLICATIONS</span>
-              </h1>
-              <p className="mt-4 text-lg sm:text-xl text-academic-200 font-medium tracking-wide">
-                Where our first MCA journey begins.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[455px] lg:min-h-[465px]">
 
-            {/* Description */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              The Master of Computer Applications (MCA) programme at St. Berchmans College, Changanassery commenced in 2026. The inaugural <strong>MCA Batch 2026–2028</strong> marks the beginning of an exciting chapter in postgraduate computing education at SB College.
-            </p>
+          {/* =====================================================
+              LEFT CONTENT
+          ====================================================== */}
+          <div className="lg:col-span-7 flex items-center py-8 sm:py-9 lg:py-10">
+            <div className="w-full max-w-2xl">
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link
-                to="/students"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-navy-950 bg-white hover:bg-slate-100 transition-all duration-200 shadow-md hover:shadow-lg active:scale-98"
-              >
-                <Users className="w-4 h-4 text-academic-600" />
-                <span>Meet Our Students</span>
-                <ArrowRight className="w-4 h-4 text-navy-900" />
-              </Link>
+              {/* Batch Label */}
+              <div className="mb-4">
+                <div className="inline-flex items-center gap-3 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+                  <span className="w-10 h-px bg-[#c9784d]" />
 
-              <Link
-                to="/about"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-slate-200 hover:text-white bg-navy-800/90 hover:bg-navy-700/90 border border-navy-700 transition-all duration-200"
-              >
-                <BookOpen className="w-4 h-4 text-academic-400" />
-                <span>Explore MCA Programme</span>
-              </Link>
-            </div>
-
-            {/* Batch Info Pill */}
-            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>Inaugural Batch: 2026–2028</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-academic-400"></span>
-                <span>Changanassery, Kerala</span>
-              </span>
-            </div>
-
-          </div>
-
-          {/* Right Column: Local College Image (5 cols) */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Outer Glow */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-academic-500/30 to-amber-500/20 blur-xl opacity-70"></div>
-
-              {/* College Image Frame */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/90 bg-navy-950">
-                <img 
-                  src={sbCollegeImg} 
-                  alt="St. Berchmans College Campus, Changanassery"
-                  className="w-full h-72 sm:h-96 object-cover object-center"
-                />
-                
-                {/* Overlay Caption */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent flex flex-col justify-end p-5 sm:p-6 text-white">
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-academic-600 text-white w-fit shadow">
-                    SB College Campus
+                  <span>
+                    First MCA Batch 2026–2028
                   </span>
-                  <h2 className="text-base sm:text-lg font-bold font-display mt-1 text-white">
-                    St. Berchmans College
-                  </h2>
-                  <p className="text-xs text-slate-300">
-                    Changanassery, Kottayam, Kerala
-                  </p>
                 </div>
+              </div>
+
+              {/* =================================================
+                  MAIN HEADING
+              ================================================== */}
+              <div>
+                <h1 className="font-serif text-[3.2rem] sm:text-[3.45rem] lg:text-[3.75rem] leading-[0.91] tracking-[-0.045em] text-stone-900">
+
+                  <span className="block">
+                    Master of
+                  </span>
+
+                  <span className="block text-[#c9784d]">
+                    Computer
+                  </span>
+
+                  <span className="block text-[#c9784d]">
+                    Applications
+                  </span>
+
+                </h1>
+
+                {/* Divider */}
+                <div className="w-11 h-px bg-[#c9784d] mt-5 mb-3" />
+
+                {/* Subtitle */}
+                <p className="font-serif text-base sm:text-lg text-stone-600 leading-relaxed">
+                  Where our first MCA journey begins.
+                </p>
+              </div>
+
+              {/* =================================================
+                  DESCRIPTION
+              ================================================== */}
+              <p className="mt-3 max-w-xl text-[13px] sm:text-[14px] leading-[1.55] text-stone-500">
+                The Master of Computer Applications (MCA) programme at
+                St. Berchmans College, Changanassery commenced in 2026. The
+                inaugural{' '}
+                <strong className="text-stone-700">
+                  MCA Batch 2026–2028
+                </strong>{' '}
+                marks the beginning of an exciting chapter in postgraduate
+                computing education at SB College.
+              </p>
+
+              {/* =================================================
+                  CALL TO ACTION BUTTONS
+              ================================================== */}
+              <div className="mt-5 flex flex-col sm:flex-row gap-3">
+
+                {/* Meet Students */}
+                <Link
+                  to="/students"
+                  className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-md bg-[#c9784d] text-white text-[13px] font-semibold hover:bg-[#b96843] transition-all duration-200 shadow-sm hover:shadow-md"
+                >
+                  <Users className="w-4 h-4" />
+
+                  <span>
+                    Meet Our Students
+                  </span>
+
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                {/* Explore Programme */}
+                <Link
+                  to="/about"
+                  className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-md border border-[#d89a7a] bg-white text-[#b96843] text-[13px] font-semibold hover:bg-[#fdf4ef] transition-all duration-200"
+                >
+                  <BookOpen className="w-4 h-4" />
+
+                  <span>
+                    Explore MCA Programme
+                  </span>
+                </Link>
+
+              </div>
+
+              {/* =================================================
+                  BATCH INFORMATION
+              ================================================== */}
+              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-stone-500">
+
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c9784d]" />
+
+                  Inaugural Batch: 2026–2028
+                </span>
+
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
+
+                  Changanassery, Kerala
+                </span>
+
               </div>
 
             </div>
           </div>
 
+          {/* =====================================================
+              RIGHT COLLEGE IMAGE
+          ====================================================== */}
+          <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-0">
+
+            <div className="absolute inset-0 lg:-right-12 xl:-right-16">
+
+              {/* =================================================
+                  ASYMMETRIC IMAGE FRAME
+              ================================================== */}
+              <div className="relative h-full min-h-[320px] lg:min-h-[465px] overflow-hidden lg:[clip-path:polygon(25%_0,100%_0,100%_88%,84%_100%,18%_100%,0%_45%)]">
+
+                <img
+                  src={sbCollegeImg}
+                  alt="St. Berchmans College Campus, Changanassery"
+                  className="w-full h-full object-cover object-center"
+                />
+
+                {/* Very subtle fade only at the image edge */}
+                <div className="absolute inset-y-0 left-0 w-1/5 bg-gradient-to-r from-[#faf8f5]/30 to-transparent" />
+
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* =========================================================
+            FEATURE STRIP
+        ========================================================== */}
+        <div className="relative -mt-1 lg:-mt-5 pb-5 lg:pb-6">
+
+          <div className="bg-white border border-stone-200 shadow-[0_10px_30px_rgba(45,39,35,0.06)] rounded-xl">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+
+              {/* =================================================
+                  QUALITY EDUCATION
+              ================================================== */}
+              <div className="flex items-center gap-3.5 px-4 sm:px-5 py-3.5 lg:py-4 border-b sm:border-r lg:border-b-0 border-stone-200">
+
+                <div className="w-9 h-9 shrink-0 rounded-full bg-[#fdf1eb] text-[#c9784d] flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4" />
+                </div>
+
+                <div>
+                  <h3 className="text-[11px] font-bold text-stone-800">
+                    Quality Education
+                  </h3>
+
+                  <p className="text-[10px] text-stone-500 mt-0.5">
+                    Industry-aligned curriculum
+                  </p>
+                </div>
+
+              </div>
+
+              {/* =================================================
+                  PRACTICAL LEARNING
+              ================================================== */}
+              <div className="flex items-center gap-3.5 px-4 sm:px-5 py-3.5 lg:py-4 lg:border-r border-b sm:border-b-0 border-stone-200">
+
+                <div className="w-9 h-9 shrink-0 rounded-full bg-[#fdf1eb] text-[#c9784d] flex items-center justify-center">
+                  <Code2 className="w-4 h-4" />
+                </div>
+
+                <div>
+                  <h3 className="text-[11px] font-bold text-stone-800">
+                    Practical Learning
+                  </h3>
+
+                  <p className="text-[10px] text-stone-500 mt-0.5">
+                    Hands-on experience
+                  </p>
+                </div>
+
+              </div>
+
+              {/* =================================================
+                  EXPERT FACULTY
+              ================================================== */}
+              <div className="flex items-center gap-3.5 px-4 sm:px-5 py-3.5 lg:py-4 border-b sm:border-r lg:border-b-0 border-stone-200">
+
+                <div className="w-9 h-9 shrink-0 rounded-full bg-[#fdf1eb] text-[#c9784d] flex items-center justify-center">
+                  <UserRound className="w-4 h-4" />
+                </div>
+
+                <div>
+                  <h3 className="text-[11px] font-bold text-stone-800">
+                    Expert Faculty
+                  </h3>
+
+                  <p className="text-[10px] text-stone-500 mt-0.5">
+                    Guiding your future
+                  </p>
+                </div>
+
+              </div>
+
+              {/* =================================================
+                  BRIGHT FUTURE
+              ================================================== */}
+              <div className="flex items-center gap-3.5 px-4 sm:px-5 py-3.5 lg:py-4">
+
+                <div className="w-9 h-9 shrink-0 rounded-full bg-[#fdf1eb] text-[#c9784d] flex items-center justify-center">
+                  <TrendingUp className="w-4 h-4" />
+                </div>
+
+                <div>
+                  <h3 className="text-[11px] font-bold text-stone-800">
+                    Bright Future
+                  </h3>
+
+                  <p className="text-[10px] text-stone-500 mt-0.5">
+                    Limitless opportunities
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }
