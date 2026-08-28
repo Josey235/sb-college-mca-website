@@ -38,7 +38,7 @@ export default function Home() {
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-academic-50 text-academic-700 border border-academic-200">
               <span className="w-2 h-2 rounded-full bg-academic-500"></span>
-              welcome to kristu jyothi
+              welcome to kristu jyothi college and management
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy-900 font-display leading-tight">
