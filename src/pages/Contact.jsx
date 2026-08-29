@@ -101,7 +101,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-bold text-navy-900">Head of Department</h4>
                     <p className="mt-0.5 text-slate-700 font-semibold">
-                      Smitha
+                      Ms. Smitha Krishnan
                     </p>
                     <p className="text-xs text-slate-500">Department of Computer Applications</p>
                   </div>
