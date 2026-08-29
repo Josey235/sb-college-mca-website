@@ -17,8 +17,6 @@ import {
   Calendar,
   Code,
   Images,
-  Award,
-  CheckCircle2
 } from 'lucide-react';
 
 export default function Home() {
@@ -26,366 +24,455 @@ export default function Home() {
   const displayStudents = studentsList.slice(0, 4);
 
   return (
-    <div className="space-y-0 pb-20 bg-[#faf8f5]">
-      {/* 1. Hero Section */}
+    <div className="space-y-20 pb-20">
+
+      {/* =========================================================
+          1. HERO SECTION
+      ========================================================= */}
       <Hero />
 
-      {/* 2. About Our MCA Programme */}
-      <section className="bg-white py-20 sm:py-24 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Content */}
-            <div className="lg:col-span-7">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="w-10 h-px bg-terracotta-600" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
-                  About the MCA Programme
-                </span>
-              </div>
+      {/* =========================================================
+          2. ABOUT OUR MCA PROGRAMME
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight text-stone-900">
-                Empowering Minds.
-                <br />
-                <span className="text-terracotta-600">
-                  Building Futures.
-                </span>
-              </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-              <p className="mt-7 text-sm sm:text-base leading-7 text-stone-600 max-w-2xl">
+          {/* LEFT CONTENT */}
+          <div className="lg:col-span-7">
+
+            {/* Section Label */}
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-px bg-[#c9784d]" />
+
+              <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+                About the MCA Programme
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight text-stone-900">
+              Empowering Minds.
+              <br />
+              <span className="text-[#c9784d]">
+                Building Futures.
+              </span>
+            </h2>
+
+            {/* Divider */}
+            <div className="w-12 h-px bg-[#c9784d] mt-6 mb-6" />
+
+            {/* Main Description */}
+            <div className="space-y-5 max-w-2xl">
+
+              <p className="font-serif text-lg sm:text-xl leading-relaxed text-stone-700">
                 The Master of Computer Applications (MCA) programme at{' '}
-                <strong className="text-stone-800">
+                <strong className="font-semibold text-stone-900">
                   St. Berchmans College, Changanassery
                 </strong>
-                , began in <strong className="text-stone-800">2026</strong>.
-                The <strong className="text-stone-800">MCA Batch 2026–2028</strong>{' '}
+                , began in <strong className="font-semibold text-stone-900">2026</strong>.
+                The <strong className="font-semibold text-stone-900">
+                  MCA Batch 2026–2028
+                </strong>{' '}
                 represents the first batch of the programme.
               </p>
 
-              <p className="mt-4 text-sm sm:text-base leading-7 text-stone-500 max-w-2xl">
-                The department is led by <strong className="text-stone-700">Smitha</strong>,
-                Head of the Department. As the inaugural cohort, the 2026–2028
-                batch marks a proud and foundational milestone in postgraduate
+              <p className="text-[15px] sm:text-base leading-7 text-stone-600">
+                The department is led by{' '}
+                <strong className="font-semibold text-stone-800">
+                  Smitha
+                </strong>
+                , Head of the Department. As the inaugural cohort, the
+                2026–2028 batch marks a foundational milestone in postgraduate
                 computer science education at St. Berchmans College.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 max-w-2xl">
-                <div className="p-5 bg-[#faf8f5] border border-stone-200 rounded-lg">
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.16em] block mb-2">
-                    Programme Launch
-                  </span>
-
-                  <span className="font-serif text-2xl text-stone-900">
-                    Year 2026
-                  </span>
-
-                  <p className="text-xs text-stone-500 mt-1.5">
-                    Newly started postgraduate programme
-                  </p>
-                </div>
-
-                <div className="p-5 bg-[#faf8f5] border border-stone-200 rounded-lg">
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.16em] block mb-2">
-                    Inaugural Batch
-                  </span>
-
-                  <span className="font-serif text-2xl text-stone-900">
-                    2026–2028
-                  </span>
-
-                  <p className="text-xs text-stone-500 mt-1.5">
-                    First MCA Batch of SB College
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-terracotta-700 hover:text-terracotta-800 group"
-                >
-                  <span>Read more about our MCA Department</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
             </div>
 
-            {/* College Image */}
-            <div className="lg:col-span-5">
-              <div className="relative">
-                <div className="absolute -inset-3 bg-terracotta-100/50 rounded-[2rem] blur-xl" />
+            {/* INFORMATION CARDS */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
 
-                <div className="relative overflow-hidden rounded-[1.5rem] border border-stone-200 bg-stone-100 shadow-[0_20px_50px_rgba(45,39,35,0.08)]">
-                  <img
-                    src={sbCollegeImg}
-                    alt="St. Berchmans College Campus, Changanassery"
-                    className="w-full h-[420px] object-cover"
-                  />
+              {/* Programme Launch */}
+              <div className="p-5 rounded-lg bg-[#faf8f5] border border-stone-200">
 
-                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-stone-950/75 via-stone-950/20 to-transparent">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80">
-                      St. Berchmans College
-                    </span>
+                <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.18em] block mb-2">
+                  Programme Launch
+                </span>
 
-                    <h3 className="font-serif text-xl text-white mt-1">
-                      Changanassery, Kerala
-                    </h3>
+                <span className="font-serif text-2xl text-stone-900">
+                  Year 2026
+                </span>
 
-                    <p className="text-xs text-white/70 mt-1">
-                      Department of Computer Applications
-                    </p>
-                  </div>
-                </div>
+                <p className="text-xs text-stone-500 mt-1.5">
+                  Newly started postgraduate programme
+                </p>
+
               </div>
+
+              {/* Inaugural Batch */}
+              <div className="p-5 rounded-lg bg-[#faf8f5] border border-stone-200">
+
+                <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.18em] block mb-2">
+                  Inaugural Batch
+                </span>
+
+                <span className="font-serif text-2xl text-stone-900">
+                  2026–2028
+                </span>
+
+                <p className="text-xs text-stone-500 mt-1.5">
+                  First MCA Batch of SB College
+                </p>
+
+              </div>
+
             </div>
+
+            {/* Read More */}
+            <div className="mt-8">
+
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#b96843] hover:text-[#a95736] group"
+              >
+                <span>
+                  Read more about our MCA Department
+                </span>
+
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+            </div>
+
           </div>
+
+          {/* =====================================================
+              RIGHT COLLEGE IMAGE
+          ====================================================== */}
+          <div className="lg:col-span-5">
+
+            <div className="relative">
+
+              {/* Soft Background */}
+              <div className="absolute -inset-4 bg-[#e8c7b5]/30 blur-2xl rounded-[2rem]" />
+
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-stone-200 bg-stone-100 shadow-[0_20px_50px_rgba(45,39,35,0.10)]">
+
+                <img
+                  src={sbCollegeImg}
+                  alt="St. Berchmans College Campus, Changanassery"
+                  className="w-full h-[400px] object-cover"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* 3. Faculty Section */}
+      {/* =========================================================
+          3. FACULTY SECTION
+      ========================================================= */}
       <section className="bg-[#f5f1ec] py-20 sm:py-24 border-y border-stone-200">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
+
             <div>
+
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-px bg-terracotta-600" />
+
+                <span className="w-10 h-px bg-[#c9784d]" />
+
                 <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
                   Department Leadership
                 </span>
+
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl text-stone-900">
                 MCA Department{' '}
-                <span className="text-terracotta-600">Faculty</span>
+                <span className="text-[#c9784d]">
+                  Faculty
+                </span>
               </h2>
 
               <p className="mt-3 text-stone-500 text-sm max-w-2xl">
-                Led by Head of Department <strong className="text-stone-700">Smitha</strong>.
-                Additional faculty members will be updated as department
+                Led by Head of Department{' '}
+                <strong className="text-stone-700">
+                  Smitha
+                </strong>
+                . Additional faculty members will be updated as department
                 details are added.
               </p>
+
             </div>
 
             <Link
               to="/faculty"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md font-semibold text-xs sm:text-sm text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 transition-colors shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 transition-colors shrink-0"
             >
               <span>View Faculty Page</span>
-              <ArrowRight className="w-4 h-4 text-terracotta-600" />
+
+              <ArrowRight className="w-4 h-4 text-[#c9784d]" />
             </Link>
+
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
             {displayFaculty.map((faculty) => (
-              <FacultyCard key={faculty.id} faculty={faculty} />
+              <FacultyCard
+                key={faculty.id}
+                faculty={faculty}
+              />
             ))}
+
           </div>
+
         </div>
+
       </section>
 
-      {/* 4. Student Showcase */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-px bg-terracotta-600" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
-                  MCA Batch 2026–2028
-                </span>
-              </div>
+      {/* =========================================================
+          4. STUDENT SHOWCASE
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-              <h2 className="font-serif text-3xl sm:text-4xl text-stone-900">
-                Our <span className="text-terracotta-600">Students</span>
-              </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
 
-              <p className="mt-3 text-stone-500 text-sm max-w-2xl">
-                Meet the scholars of the First MCA Batch (2026–2028) at
-                St. Berchmans College, Changanassery.
-              </p>
-            </div>
+          <div>
 
-            <Link
-              to="/students"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md font-semibold text-xs sm:text-sm text-white bg-terracotta-600 hover:bg-terracotta-700 transition-colors shrink-0"
-            >
-              <span>View All Students</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {displayStudents.map((student) => (
-              <StudentCard key={student.id} student={student} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Department Portals */}
-      <section className="bg-stone-900 py-20 sm:py-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-px bg-terracotta-400" />
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
-                Department Hub
+              <span className="w-10 h-px bg-[#c9784d]" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
+                MCA Batch 2026–2028
               </span>
+
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl">
-              Explore MCA{' '}
-              <span className="text-terracotta-400">Sections</span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-stone-900">
+              Our{' '}
+              <span className="text-[#c9784d]">
+                Students
+              </span>
             </h2>
 
-            <p className="mt-4 text-sm text-stone-400 max-w-2xl leading-6">
-              Quick access to curriculum, student projects, events, and
-              department gallery.
+            <p className="mt-3 text-stone-500 text-sm max-w-2xl">
+              Meet the scholars of the First MCA Batch (2026–2028) at
+              St. Berchmans College, Changanassery.
             </p>
+
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-700/50 mt-12 border border-stone-700/50">
+          <Link
+            to="/students"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm text-white bg-[#c9784d] hover:bg-[#b96843] transition-colors shrink-0"
+          >
+            <span>View All Students</span>
+
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {displayStudents.map((student) => (
+            <StudentCard
+              key={student.id}
+              student={student}
+            />
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* =========================================================
+          5. DEPARTMENT PORTALS
+      ========================================================= */}
+      <section className="bg-[#171411] py-20 text-white relative">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <SectionTitle
+            badge="Department Hub"
+            title="Explore MCA"
+            highlightText="Sections"
+            subtitle="Quick access to curriculum, student projects, events, and department gallery."
+            dark={true}
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+
             {/* Academics */}
             <Link
               to="/academics"
-              className="p-7 bg-stone-900 hover:bg-stone-800 transition-colors group flex flex-col justify-between min-h-[230px]"
+              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
             >
+
               <div>
-                <div className="w-11 h-11 rounded-full border border-stone-700 text-terracotta-400 flex items-center justify-center mb-6 group-hover:border-terracotta-500 group-hover:bg-terracotta-500/10 transition-colors">
+
+                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
                   <BookOpen className="w-5 h-5" />
                 </div>
 
-                <h3 className="font-serif text-xl text-white mb-2">
+                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
                   Academics
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-6">
-                  Academic information and syllabus structure for the MCA
-                  programme.
+                <p className="text-xs text-stone-400 leading-relaxed">
+                  Academic information and syllabus structure for the MCA programme.
                 </p>
+
               </div>
 
-              <span className="mt-6 text-xs font-semibold text-terracotta-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                 View Academics
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
+
             </Link>
 
             {/* Projects */}
             <Link
               to="/projects"
-              className="p-7 bg-stone-900 hover:bg-stone-800 transition-colors group flex flex-col justify-between min-h-[230px]"
+              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
             >
+
               <div>
-                <div className="w-11 h-11 rounded-full border border-stone-700 text-terracotta-400 flex items-center justify-center mb-6 group-hover:border-terracotta-500 group-hover:bg-terracotta-500/10 transition-colors">
+
+                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
                   <Code className="w-5 h-5" />
                 </div>
 
-                <h3 className="font-serif text-xl text-white mb-2">
+                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
                   Projects
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-6">
-                  Student semester projects will be showcased here as
-                  coursework progresses.
+                <p className="text-xs text-stone-400 leading-relaxed">
+                  Student semester projects will be showcased here as coursework progresses.
                 </p>
+
               </div>
 
-              <span className="mt-6 text-xs font-semibold text-terracotta-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                 View Projects
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
+
             </Link>
 
             {/* Events */}
             <Link
               to="/events"
-              className="p-7 bg-stone-900 hover:bg-stone-800 transition-colors group flex flex-col justify-between min-h-[230px]"
+              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
             >
+
               <div>
-                <div className="w-11 h-11 rounded-full border border-stone-700 text-terracotta-400 flex items-center justify-center mb-6 group-hover:border-terracotta-500 group-hover:bg-terracotta-500/10 transition-colors">
+
+                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
                   <Calendar className="w-5 h-5" />
                 </div>
 
-                <h3 className="font-serif text-xl text-white mb-2">
+                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
                   Events
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-6">
+                <p className="text-xs text-stone-400 leading-relaxed">
                   Departmental events and announcements for the new batch.
                 </p>
+
               </div>
 
-              <span className="mt-6 text-xs font-semibold text-terracotta-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                 View Events
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
+
             </Link>
 
             {/* Gallery */}
             <Link
               to="/gallery"
-              className="p-7 bg-stone-900 hover:bg-stone-800 transition-colors group flex flex-col justify-between min-h-[230px]"
+              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
             >
+
               <div>
-                <div className="w-11 h-11 rounded-full border border-stone-700 text-terracotta-400 flex items-center justify-center mb-6 group-hover:border-terracotta-500 group-hover:bg-terracotta-500/10 transition-colors">
+
+                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
                   <Images className="w-5 h-5" />
                 </div>
 
-                <h3 className="font-serif text-xl text-white mb-2">
+                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
                   Gallery
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-6">
-                  Department and campus photo gallery for St. Berchmans
-                  College.
+                <p className="text-xs text-stone-400 leading-relaxed">
+                  Department and campus photo gallery for St. Berchmans College.
                 </p>
+
               </div>
 
-              <span className="mt-6 text-xs font-semibold text-terracotta-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                 View Gallery
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
+
             </Link>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* 6. Call to Action */}
-      <section className="bg-[#faf8f5] py-20 sm:py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="w-10 h-px bg-terracotta-500" />
+      {/* =========================================================
+          6. CALL TO ACTION
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
-                St. Berchmans College, Changanassery
-              </span>
+        <div className="rounded-3xl bg-[#171411] border border-stone-800 text-white p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
 
-              <span className="w-10 h-px bg-terracotta-500" />
-            </div>
+          <div className="space-y-2 text-center md:text-left">
 
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-stone-900">
+            <span className="px-3 py-0.5 rounded-full text-xs font-bold bg-[#c9784d] text-white inline-block mb-1">
+              St. Berchmans College, Changanassery
+            </span>
+
+            <h3 className="font-serif text-2xl sm:text-3xl text-white">
               MCA Batch 2026–2028
             </h3>
 
-            <p className="mt-4 text-sm text-stone-500 max-w-xl mx-auto leading-6">
+            <p className="text-xs sm:text-sm text-stone-400 max-w-xl">
               Where our first MCA journey begins. Get in touch with the
               department for enquiries.
             </p>
 
-            <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm bg-terracotta-600 text-white hover:bg-terracotta-700 transition-colors shadow-sm"
-              >
-                <span>Contact MCA Department</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
           </div>
+
+          <Link
+            to="/contact"
+            className="px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm bg-white text-stone-900 hover:bg-stone-100 transition-colors shadow shrink-0 flex items-center gap-2"
+          >
+            <span>Contact MCA Department</span>
+
+            <ArrowRight className="w-4 h-4 text-[#c9784d]" />
+          </Link>
+
         </div>
+
       </section>
+
     </div>
   );
 }
