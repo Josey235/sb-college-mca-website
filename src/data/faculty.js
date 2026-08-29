@@ -61,5 +61,20 @@ export const facultyMembers = [
     photo: "/images/faculty/sachin-varghese-biju.jpg",
     photoFilename: "sachin-varghese-biju.jpg",
     isPlaceholder: false
+  },
+  {
+    id: "fac-5",
+    name: "Ms. Sharon Sahji",
+    title: "Ms.",
+    designation: "Assistant Professor",
+    role: null,
+    isHOD: false,
+    isTutor: false,
+    department: "Computer Science",
+    qualification: "MCA",
+    email: "sharon@sbcollege.ac.in",
+    photo: "/images/faculty/sharon-sahji.jpg",
+    photoFilename: "sharon-sahji.jpg",
+    isPlaceholder: false
   }
 ];
