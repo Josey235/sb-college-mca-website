@@ -82,7 +82,7 @@ export default function About() {
               <p>
                 The department is headed by{' '}
                 <strong className="font-semibold text-stone-900">
-                  Smitha
+                  Ms. Smitha Krishnan
                 </strong>
                 , Head of Department. Situated in the historic town of
                 Changanassery, Kerala, St. Berchmans College introduces this
@@ -147,7 +147,7 @@ export default function About() {
                 </span>
 
                 <p className="font-sans text-sm font-semibold text-stone-900">
-                  Smitha
+                  Ms. Smitha Krishnan
                 </p>
 
                 <p className="font-sans text-[11px] text-stone-500 mt-0.5">
