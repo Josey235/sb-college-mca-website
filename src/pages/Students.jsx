@@ -35,29 +35,29 @@ export default function Students() {
   }, []);
 
   return (
-    <div className="bg-[#f8f9f8] min-h-screen pb-20">
+    <div className="min-h-screen bg-[#f8f9f8] pb-20">
 
       {/* Hero Header */}
-      <section className="bg-[#f8f9f8] border-b border-stone-200/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <section className="border-b border-stone-200/70 bg-[#f8f9f8]">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
 
           <div className="max-w-3xl">
 
             {/* Labels */}
-            <div className="flex items-center gap-2 flex-wrap mb-4">
+            <div className="mb-4 flex flex-wrap items-center gap-2">
 
-              <span className="px-3.5 py-1 rounded-full text-[11px] font-semibold bg-[#c9784d] text-white border border-[#c9784d]">
+              <span className="rounded-full border border-[#c9784d] bg-[#c9784d] px-3.5 py-1 text-[11px] font-semibold text-white">
                 Department Directory
               </span>
 
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#fff4d6] text-[#a96f00] border border-[#e8c96b]">
+              <span className="rounded-full border border-[#e8c96b] bg-[#fff4d6] px-3 py-1 text-[11px] font-bold text-[#a96f00]">
                 Batch 2026–2028
               </span>
 
             </div>
 
             {/* Heading */}
-            <h1 className="font-serif text-3xl sm:text-4xl text-stone-900 leading-tight">
+            <h1 className="font-serif text-3xl leading-tight text-stone-900 sm:text-4xl">
               MCA{' '}
               <span className="text-[#c9784d]">
                 Students
@@ -65,7 +65,7 @@ export default function Students() {
             </h1>
 
             {/* Description */}
-            <p className="mt-3 text-stone-500 text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-500 sm:text-base">
               Inaugural cohort of the Master of Computer Applications programme
               at St. Berchmans College, Changanassery (Batch 2026–2028).
             </p>
@@ -76,31 +76,33 @@ export default function Students() {
       </section>
 
       {/* Students */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      <main className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
 
         {/* Loading State */}
         {loading && (
           <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-            <Loader2 className="w-8 h-8 animate-spin text-[#c9784d] mb-4" />
+
+            <Loader2 className="mb-4 h-8 w-8 animate-spin text-[#c9784d]" />
 
             <p className="text-sm font-medium">
               Loading student profiles...
             </p>
+
           </div>
         )}
 
         {/* Error State */}
         {!loading && error && (
-          <div className="p-5 rounded-2xl bg-red-50 border border-red-200 text-red-800 flex items-start gap-3">
+          <div className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-800">
 
-            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
 
             <div>
               <p className="font-semibold">
                 Unable to load students
               </p>
 
-              <p className="text-sm mt-1">
+              <p className="mt-1 text-sm">
                 {error}
               </p>
             </div>
@@ -112,7 +114,7 @@ export default function Students() {
         {!loading && !error && students.length === 0 && (
           <div className="py-20 text-center">
 
-            <div className="max-w-md mx-auto">
+            <div className="mx-auto max-w-md">
 
               <h2 className="font-serif text-2xl text-stone-900">
                 No student profiles yet
@@ -130,7 +132,7 @@ export default function Students() {
 
         {/* Student Cards */}
         {!loading && !error && students.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
 
             {students.map((student) => (
               <StudentCard
