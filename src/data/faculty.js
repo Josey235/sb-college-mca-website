@@ -73,7 +73,7 @@ export const facultyMembers = [
     department: "Computer Science",
     qualification: "MCA",
     email: "sharon@sbcollege.ac.in",
-    photo: "/images/faculty/sharon-sahji.jpg",
+    photo: "/images/faculty/sharon-shaji.jpg",
     photoFilename: "sharon-sahji.jpg",
     isPlaceholder: false
   }
