@@ -33,7 +33,7 @@ export default function Faculty() {
           <div>
             <p className="font-semibold text-navy-900">Department Leadership</p>
             <p className="text-slate-600 mt-0.5">
-              The MCA Department is headed by <strong>Ms. Smitha Krishnan</strong>, Assistant Professor &amp; Head of the Department.
+              The MCA Department is headed by <strong>Mrs. Smitha Krishnan</strong>, Assistant Professor &amp; Head of the Department.
             </p>
           </div>
         </div>
