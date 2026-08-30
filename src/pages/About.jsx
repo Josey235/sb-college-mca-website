@@ -147,7 +147,7 @@ export default function About() {
                 </span>
 
                 <p className="font-sans text-sm font-semibold text-stone-900">
-                  Ms. Smitha Krishnan
+                  Mrs. Smitha Krishnan
                 </p>
 
                 <p className="font-sans text-[11px] text-stone-500 mt-0.5">
