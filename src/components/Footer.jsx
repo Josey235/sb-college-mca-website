@@ -101,7 +101,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-academic-400 shrink-0" />
-                <span>HOD: Ms. Smitha Krishnan</span>
+                <span>HOD: Mrs. Smitha Krishnan</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-academic-400 shrink-0" />
