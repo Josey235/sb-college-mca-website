@@ -110,7 +110,7 @@ export default function Home() {
               <p className="text-[15px] sm:text-base leading-7 text-stone-600">
                 The department is led by{' '}
                 <strong className="font-semibold text-stone-800">
-                  Ms. Smitha Krishnan
+                  Mrs. Smitha Krishnan
                 </strong>
                 , Head of the Department. As the inaugural cohort, the
                 2026–2028 batch marks a foundational milestone in postgraduate
@@ -230,7 +230,7 @@ export default function Home() {
               <p className="mt-3 text-stone-500 text-sm max-w-2xl">
                 Led by Head of Department{' '}
                 <strong className="text-stone-700">
-                  Ms. Smitha Krishnan
+                  Mrs. Smitha Krishnan
                 </strong>
                 . Additional faculty members will be updated as department
                 details are added.
