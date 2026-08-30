@@ -64,7 +64,7 @@ export const facultyMembers = [
   },
   {
     id: "fac-5",
-    name: "Mr. Sharon Sahji",
+    name: "Mr. Sharon Shaji",
     title: "Mr.",
     designation: "Assistant Professor",
     role: null,
@@ -74,7 +74,7 @@ export const facultyMembers = [
     qualification: "MCA",
     email: "sharon@sbcollege.ac.in",
     photo: "/images/faculty/sharon-shaji.jpg",
-    photoFilename: "sharon-sahji.jpg",
+    photoFilename: "sharon-shaji.jpg",
     isPlaceholder: false
   }
 ];
