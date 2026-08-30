@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import FacultyCard from '../components/FacultyCard';
 import StudentCard from '../components/StudentCard';
 import SectionTitle from '../components/SectionTitle';
 import { facultyMembers } from '../data/faculty';
-import { studentsList } from '../data/students';
+import { supabase } from '../lib/supabase';
 import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 import {
@@ -21,7 +21,37 @@ import {
 
 export default function Home() {
   const displayFaculty = facultyMembers.slice(0, 4);
-  const displayStudents = studentsList.slice(0, 4);
+
+  const [displayStudents, setDisplayStudents] = useState([]);
+  const [studentsLoading, setStudentsLoading] = useState(true);
+  const [studentsError, setStudentsError] = useState('');
+
+  useEffect(() => {
+    async function fetchStudents() {
+      setStudentsLoading(true);
+      setStudentsError('');
+
+      const { data, error } = await supabase
+        .from('Students')
+        .select(
+          'id, created_at, name, roll_number, email, phone, batch, photo_url, bio'
+        )
+        .order('id', { ascending: true })
+        .limit(4);
+
+      if (error) {
+        console.error('Error fetching homepage students:', error);
+        setStudentsError('Unable to load student profiles right now.');
+        setDisplayStudents([]);
+      } else {
+        setDisplayStudents(data || []);
+      }
+
+      setStudentsLoading(false);
+    }
+
+    fetchStudents();
+  }, []);
 
   return (
     <div className="space-y-20 pb-20">
@@ -41,7 +71,6 @@ export default function Home() {
           {/* LEFT CONTENT */}
           <div className="lg:col-span-7">
 
-            {/* Section Label */}
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-px bg-[#c9784d]" />
 
@@ -50,7 +79,6 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Heading */}
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight text-stone-900">
               Empowering Minds.
               <br />
@@ -59,10 +87,8 @@ export default function Home() {
               </span>
             </h2>
 
-            {/* Divider */}
             <div className="w-12 h-px bg-[#c9784d] mt-6 mb-6" />
 
-            {/* Main Description */}
             <div className="space-y-5 max-w-2xl">
 
               <p className="font-serif text-lg sm:text-xl leading-relaxed text-stone-700">
@@ -70,8 +96,12 @@ export default function Home() {
                 <strong className="font-semibold text-stone-900">
                   St. Berchmans College, Changanassery
                 </strong>
-                , began in <strong className="font-semibold text-stone-900">2026</strong>.
-                The <strong className="font-semibold text-stone-900">
+                , began in{' '}
+                <strong className="font-semibold text-stone-900">
+                  2026
+                </strong>
+                . The{' '}
+                <strong className="font-semibold text-stone-900">
                   MCA Batch 2026–2028
                 </strong>{' '}
                 represents the first batch of the programme.
@@ -89,7 +119,6 @@ export default function Home() {
 
             </div>
 
-            {/* INFORMATION CARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
 
               {/* Programme Launch */}
@@ -128,7 +157,6 @@ export default function Home() {
 
             </div>
 
-            {/* Read More */}
             <div className="mt-8">
 
               <Link
@@ -146,17 +174,13 @@ export default function Home() {
 
           </div>
 
-          {/* =====================================================
-              RIGHT COLLEGE IMAGE
-          ====================================================== */}
+          {/* RIGHT COLLEGE IMAGE */}
           <div className="lg:col-span-5">
 
             <div className="relative">
 
-              {/* Soft Background */}
               <div className="absolute -inset-4 bg-[#e8c7b5]/30 blur-2xl rounded-[2rem]" />
 
-              {/* Image */}
               <div className="relative overflow-hidden rounded-[1.5rem] border border-stone-200 bg-stone-100 shadow-[0_20px_50px_rgba(45,39,35,0.10)]">
 
                 <img
@@ -284,16 +308,34 @@ export default function Home() {
 
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* DATABASE STUDENTS */}
+        {studentsLoading ? (
+          <div className="min-h-[180px] flex items-center justify-center">
+            <div className="flex items-center gap-3 text-sm text-stone-500">
+              <div className="w-5 h-5 border-2 border-stone-300 border-t-[#c9784d] rounded-full animate-spin" />
+              <span>Loading student profiles...</span>
+            </div>
+          </div>
+        ) : studentsError ? (
+          <div className="rounded-2xl border border-red-200 bg-red-50 px-6 py-5 text-sm text-red-700">
+            {studentsError}
+          </div>
+        ) : displayStudents.length === 0 ? (
+          <div className="rounded-2xl border border-stone-200 bg-[#faf8f5] px-6 py-8 text-center text-sm text-stone-500">
+            Student profiles will appear here once they are added to the department database.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          {displayStudents.map((student) => (
-            <StudentCard
-              key={student.id}
-              student={student}
-            />
-          ))}
+            {displayStudents.map((student) => (
+              <StudentCard
+                key={student.id}
+                student={student}
+              />
+            ))}
 
-        </div>
+          </div>
+        )}
 
       </section>
 
