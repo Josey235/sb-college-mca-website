@@ -78,10 +78,10 @@ export const timetableInfo = {
     }
   ],
   legend: [
-    { code: "SK", name: "Ms. Smitha Krishnan", role: "Head of the Department (HOD)" },
-    { code: "RJ", name: "Ms. Rini Elizabeth Jacob", role: "Assistant Professor / Tutor" },
-    { code: "AM", name: "Ms. Aswathy Manoharan", role: "Assistant Professor" },
-    { code: "PV", name: "Ms. P. Vijaya Lakshmi", role: "Faculty Member" },
+    { code: "SK", name: "Mrs. Smitha Krishnan", role: "Head of the Department (HOD)" },
+    { code: "RJ", name: "Mrs. Rini Elizabeth Jacob", role: "Assistant Professor / Tutor" },
+    { code: "AM", name: "Mrs. Aswathy Manoharan", role: "Assistant Professor" },
+    { code: "PV", name: "Mrs. P. Vijaya Lakshmi", role: "Faculty Member" },
     { code: "SVB", name: "Mr. Sachin Varghese Biju", role: "Assistant Professor" },
     { code: "ABB", name: "Faculty member as represented in the timetable", role: "Faculty Member" },
     { code: "SHARON", name: "Faculty member as represented in the timetable", role: "Faculty Member" }
