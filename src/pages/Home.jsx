@@ -34,7 +34,7 @@ export default function Home() {
       const { data, error } = await supabase
         .from('Students')
         .select(
-          'id, created_at, name, roll_number, email, phone, batch, photo_url, bio'
+          'id, created_at, name, roll_number, email, phone, batch, photo_url, bio, linkedin_url, github_url'
         )
         .order('id', { ascending: true })
         .limit(4);
