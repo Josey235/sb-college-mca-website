@@ -4,7 +4,7 @@
 export const facultyMembers = [
   {
     id: "fac-1",
-    name: "Ms. Smitha Krishnan",
+    name: "Mrs. Smitha Krishnan",
     title: "Ms.",
     designation: "Assistant Professor",
     role: "Head of the Department (HOD)",
@@ -19,7 +19,7 @@ export const facultyMembers = [
   },
   {
     id: "fac-2",
-    name: "Ms. Rini Elizabeth Jacob",
+    name: "Mrs. Rini Elizabeth Jacob",
     title: "Ms.",
     designation: "Assistant Professor",
     role: "Tutor",
@@ -34,7 +34,7 @@ export const facultyMembers = [
   },
   {
     id: "fac-3",
-    name: "Ms. Aswathy Manoharan",
+    name: "Mrs. Aswathy Manoharan",
     title: "Ms.",
     designation: "Assistant Professor",
     role: null,
