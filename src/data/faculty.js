@@ -64,8 +64,8 @@ export const facultyMembers = [
   },
   {
     id: "fac-5",
-    name: "Ms. Sharon Sahji",
-    title: "Ms.",
+    name: "Mr. Sharon Sahji",
+    title: "Mr.",
     designation: "Assistant Professor",
     role: null,
     isHOD: false,
