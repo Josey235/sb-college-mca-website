@@ -8,12 +8,12 @@ export const timetableInfo = {
   batch: "First MCA Batch (2026–2028)",
   description: "Official weekly class schedule for the first semester MCA cohort.",
   columns: [
-    { id: 1, label: "Period 1", time: "09:30 - 10:30" },
-    { id: 2, label: "Period 2", time: "10:30 - 11:30" },
-    { id: 3, label: "Period 3", time: "11:30 - 12:30" },
-    { id: 4, label: "Period 4", time: "01:15 - 02:15" },
-    { id: 5, label: "Period 5", time: "02:15 - 03:15" },
-    { id: 6, label: "Period 6", time: "03:15 - 04:15" }
+    { id: 1, label: "Period 1" },
+    { id: 2, label: "Period 2" },
+    { id: 3, label: "Period 3" },
+    { id: 4, label: "Period 4" },
+    { id: 5, label: "Period 5" },
+    { id: 6, label: "Period 6" }
   ],
   schedule: [
     {
