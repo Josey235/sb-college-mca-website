@@ -75,7 +75,7 @@ export default function Home() {
               <span className="w-10 h-px bg-[#c9784d]" />
 
               <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-500">
-                Abo the MCA Programme
+                About the MCA Programme
               </span>
             </div>
 
