@@ -619,7 +619,7 @@ export default function Home() {
             </h3>
 
             <p className="text-xs sm:text-sm text-stone-400 max-w-xl">
-              Where our first MCA journey begins. Get in touch with the
+              Where our first MCA journey begins.Get in touch with the
               department for enquiries.
             </p>
 
