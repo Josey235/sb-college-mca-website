@@ -31,6 +31,76 @@
 }
 
 @layer components {
+
+  /* =========================================================
+     MCA HERO PAPER TEXTURE
+     ========================================================= */
+
+.hero-texture {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+        135deg,
+      rgba(250, 248, 245, 0.97) 0%,
+      rgba(205, 210, 214, 0.719) 38%,
+      rgba(240, 241, 242, 0.9) 100%
+    ),
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+
+  background-repeat: repeat;
+  background-size: auto;
+}
+.hero-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-repeat: repeat;
+
+  opacity: 0.38;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+.faculty-texture-section {  
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    #faf8f5 0%,
+    #f2e0d1 50%,
+    #faf8f5 100%
+  );
+}
+
+/* Paper texture layer */
+.faculty-texture-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-repeat: repeat;
+
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Keep the content above the texture */
+.faculty-texture-section > div {
+  position: relative;
+  z-index: 1;
+}
+  
+  /* =========================================================
+     GLASS PANELS
+     ========================================================= */
+
   .glass-panel {
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(12px);
@@ -52,6 +122,10 @@
     border-bottom: 1px solid rgba(231, 229, 228, 0.9);
   }
 
+  /* =========================================================
+     PREMIUM UI
+     ========================================================= */
+
   .premium-divider {
     width: 42px;
     height: 1px;
@@ -67,7 +141,10 @@
   }
 }
 
-/* Custom scrollbar */
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -86,24 +163,44 @@
   background: #a8a29e;
 }
 
-/* Premium text utilities */
+/* =========================================================
+   PREMIUM TEXT GRADIENT
+   ========================================================= */
+
 .text-gradient {
-  background: linear-gradient(135deg, #b96845 0%, #d28a67 100%);
+  background: linear-gradient(
+    135deg,
+    #b96845 0%,
+    #d28a67 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #a16207 0%, #c28a32 100%);
+  background: linear-gradient(
+    135deg,
+    #a16207 0%,
+    #c28a32 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Subtle grid/dot backgrounds retained for compatibility */
+/* =========================================================
+   SUBTLE DOT BACKGROUNDS
+   ========================================================= */
+
 .bg-dots {
-  background-image: radial-gradient(#d6d3d1 1px, transparent 1px);
+  background-image: radial-gradient(
+    #d6d3d1 1px,
+    transparent 1px
+  );
+
   background-size: 24px 24px;
 }
 
@@ -112,10 +209,14 @@
     rgba(120, 113, 108, 0.12) 1px,
     transparent 1px
   );
+
   background-size: 24px 24px;
 }
 
-/* Small entrance animation used by the mobile menu */
+/* =========================================================
+   MOBILE MENU ANIMATION
+   ========================================================= */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -132,7 +233,10 @@
   animation: fadeIn 180ms ease-out;
 }
 
-/* Respect reduced-motion preferences */
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

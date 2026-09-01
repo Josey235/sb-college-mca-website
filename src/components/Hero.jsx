@@ -13,7 +13,7 @@ import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#faf8f5] border-b border-stone-100">
+    <section className="hero-texture relative overflow-hidden border-b border-stone-100">
 
       {/* =========================================================
           MAIN HERO
@@ -25,17 +25,20 @@ export default function Hero() {
           {/* =====================================================
               LEFT CONTENT
           ====================================================== */}
-          <div className="lg:col-span-7 flex items-center py-8 sm:py-9 lg:py-10">
+          <div className="lg:col-span-7 flex items-center py-8 sm:py-9 lg:py-10 relative z-10">
+
             <div className="w-full max-w-2xl">
 
               {/* Batch Label */}
               <div className="mb-4">
                 <div className="inline-flex items-center gap-3 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+
                   <span className="w-10 h-px bg-[#c9784d]" />
 
                   <span>
                     First MCA Batch 2026–2028
                   </span>
+
                 </div>
               </div>
 
@@ -43,6 +46,7 @@ export default function Hero() {
                   MAIN HEADING
               ================================================== */}
               <div>
+
                 <h1 className="font-serif text-[3.2rem] sm:text-[3.45rem] lg:text-[3.75rem] leading-[0.91] tracking-[-0.045em] text-stone-900">
 
                   <span className="block">
@@ -66,20 +70,25 @@ export default function Hero() {
                 <p className="font-serif text-base sm:text-lg text-stone-600 leading-relaxed">
                   Where our first MCA journey begins.
                 </p>
+
               </div>
 
               {/* =================================================
                   DESCRIPTION
               ================================================== */}
               <p className="mt-3 max-w-xl text-[13px] sm:text-[14px] leading-[1.55] text-stone-500">
+
                 The Master of Computer Applications (MCA) programme at
                 St. Berchmans College, Changanassery commenced in 2026. The
                 inaugural{' '}
+
                 <strong className="text-stone-700">
                   MCA Batch 2026–2028
                 </strong>{' '}
+
                 marks the beginning of an exciting chapter in postgraduate
                 computing education at SB College.
+
               </p>
 
               {/* =================================================
@@ -92,6 +101,7 @@ export default function Hero() {
                   to="/students"
                   className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-md bg-[#c9784d] text-white text-[13px] font-semibold hover:bg-[#b96843] transition-all duration-200 shadow-sm hover:shadow-md"
                 >
+
                   <Users className="w-4 h-4" />
 
                   <span>
@@ -99,18 +109,21 @@ export default function Hero() {
                   </span>
 
                   <ArrowRight className="w-4 h-4" />
+
                 </Link>
 
                 {/* Explore Programme */}
                 <Link
                   to="/about"
-                  className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-md border border-[#d89a7a] bg-white text-[#b96843] text-[13px] font-semibold hover:bg-[#fdf4ef] transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-md border border-[#d89a7a] bg-white/90 text-[#b96843] text-[13px] font-semibold hover:bg-[#fdf4ef] transition-all duration-200"
                 >
+
                   <BookOpen className="w-4 h-4" />
 
                   <span>
                     Explore MCA Programme
                   </span>
+
                 </Link>
 
               </div>
@@ -121,15 +134,19 @@ export default function Hero() {
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-stone-500">
 
                 <span className="flex items-center gap-2">
+
                   <span className="w-1.5 h-1.5 rounded-full bg-[#c9784d]" />
 
                   Inaugural Batch: 2026–2028
+
                 </span>
 
                 <span className="flex items-center gap-2">
+
                   <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
 
                   Changanassery, Kerala
+
                 </span>
 
               </div>
@@ -140,7 +157,7 @@ export default function Hero() {
           {/* =====================================================
               RIGHT COLLEGE IMAGE
           ====================================================== */}
-          <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-0">
+          <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-0 z-10">
 
             <div className="absolute inset-0 lg:-right-12 xl:-right-16">
 
@@ -167,9 +184,9 @@ export default function Hero() {
         {/* =========================================================
             FEATURE STRIP
         ========================================================== */}
-        <div className="relative -mt-1 lg:-mt-5 pb-5 lg:pb-6">
+        <div className="relative -mt-1 lg:-mt-5 pb-5 lg:pb-6 z-20">
 
-          <div className="bg-white border border-stone-200 shadow-[0_10px_30px_rgba(45,39,35,0.06)] rounded-xl">
+          <div className="bg-white/95 backdrop-blur-sm border border-stone-200 shadow-[0_10px_30px_rgba(45,39,35,0.06)] rounded-xl">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 

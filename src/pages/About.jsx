@@ -5,63 +5,91 @@ import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 export default function About() {
   return (
-    <div className="bg-[#faf8f5] min-h-screen">
+    <div className="bg-[#f8f9f8] min-h-screen">
 
-      {/* Page Header */}
-      <section className="border-b border-stone-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-7 sm:py-9">
-          <div className="max-w-3xl">
+      {/* Hero Header */}
+      <section
+        className="relative overflow-hidden border-b border-[#24201d] bg-[#14110F] py-16 text-white sm:py-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255, 255, 255, 0.045) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.045) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: '74px 74px',
+        }}
+      >
 
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-10 h-px bg-[#c9784a]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
-                Department of Computer Applications
-              </span>
-            </div>
+          <div className="max-w-3xl space-y-3">
 
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-[52px] leading-[0.98] tracking-tight text-stone-900">
+            {/* Badge */}
+            <span className="inline-flex rounded-full border border-[#E08A5B]/40 bg-[#C96F45]/80 px-3.5 py-1 text-xs font-semibold text-white">
+              Department of Computer Applications
+            </span>
+
+            {/* Heading */}
+            <h1 className="font-display text-3xl font-extrabold leading-tight sm:text-5xl">
               About{' '}
-              <span className="text-[#c9784a]">
+              <span className="text-[#C96F45]">
                 MCA Programme
               </span>
             </h1>
 
-            <p className="mt-3 text-sm sm:text-[15px] text-stone-600 leading-relaxed font-sans">
+            {/* Description */}
+            <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
               Master of Computer Applications (MCA) at St. Berchmans College,
               Changanassery, Kerala.
             </p>
 
           </div>
+
         </div>
       </section>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 lg:px-8 py-10 sm:py-12">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-9 lg:gap-12 items-start">
+      {/* Main Content */}
+      <main className="mx-auto max-w-7xl px-6 py-10 sm:py-12 lg:px-8">
+
+        <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-12 lg:gap-12">
 
           {/* Left Content */}
           <div className="lg:col-span-7">
 
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-px bg-[#c9784a]" />
+            {/* Section Label */}
+            <div className="mb-4 flex items-center gap-3">
+
+              <span className="h-px w-10 bg-[#C9784A]" />
 
               <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
                 Programme Inception · 2026
               </span>
+
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[43px] leading-[1] tracking-tight text-stone-900">
+
+            {/* Heading */}
+            <h2 className="font-serif text-3xl leading-[1] tracking-tight text-stone-900 sm:text-4xl lg:text-[43px]">
+
               The First MCA Batch at
               <br />
-              <span className="text-[#c9784a]">
+
+              <span className="text-[#C9784A]">
                 St. Berchmans College
               </span>
+
             </h2>
 
+
             {/* Description */}
-            <div className="mt-6 space-y-4 font-sans text-[14px] sm:text-[15px] text-stone-600 leading-6">
+            <div className="mt-6 space-y-4 font-sans text-[14px] leading-6 text-stone-600 sm:text-[15px]">
 
               <p>
                 The Master of Computer Applications programme at{' '}
@@ -92,12 +120,14 @@ export default function About() {
 
             </div>
 
+
             {/* Information Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-7">
+            <div className="mt-7 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
 
               {/* Institution */}
-              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5">
-                <span className="block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400 mb-1.5">
+              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5 transition-all duration-300 hover:border-[#C9784A]/40 hover:shadow-sm">
+
+                <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400">
                   Institution
                 </span>
 
@@ -105,14 +135,17 @@ export default function About() {
                   St. Berchmans College
                 </p>
 
-                <p className="font-sans text-[11px] text-stone-500 mt-0.5">
+                <p className="mt-0.5 font-sans text-[11px] text-stone-500">
                   Changanassery, Kerala
                 </p>
+
               </div>
 
+
               {/* Programme */}
-              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5">
-                <span className="block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400 mb-1.5">
+              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5 transition-all duration-300 hover:border-[#C9784A]/40 hover:shadow-sm">
+
+                <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400">
                   Programme
                 </span>
 
@@ -120,14 +153,17 @@ export default function About() {
                   Master of Computer Applications (MCA)
                 </p>
 
-                <p className="font-sans text-[11px] text-stone-500 mt-0.5">
+                <p className="mt-0.5 font-sans text-[11px] text-stone-500">
                   Started in 2026
                 </p>
+
               </div>
 
+
               {/* Inaugural Batch */}
-              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5">
-                <span className="block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400 mb-1.5">
+              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5 transition-all duration-300 hover:border-[#C9784A]/40 hover:shadow-sm">
+
+                <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400">
                   Inaugural Batch
                 </span>
 
@@ -135,14 +171,17 @@ export default function About() {
                   Batch 2026–2028
                 </p>
 
-                <p className="font-sans text-[11px] text-stone-500 mt-0.5">
+                <p className="mt-0.5 font-sans text-[11px] text-stone-500">
                   First MCA Batch
                 </p>
+
               </div>
 
+
               {/* Department Head */}
-              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5">
-                <span className="block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400 mb-1.5">
+              <div className="rounded-xl border border-stone-200 bg-white px-4 py-3.5 transition-all duration-300 hover:border-[#C9784A]/40 hover:shadow-sm">
+
+                <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.17em] text-stone-400">
                   Department Head
                 </span>
 
@@ -150,27 +189,29 @@ export default function About() {
                   Mrs. Smitha Krishnan
                 </p>
 
-                <p className="font-sans text-[11px] text-stone-500 mt-0.5">
+                <p className="mt-0.5 font-sans text-[11px] text-stone-500">
                   Head of Department
                 </p>
+
               </div>
 
             </div>
 
+
             {/* Navigation Buttons */}
-            <div className="flex flex-wrap gap-3 mt-7">
+            <div className="mt-7 flex flex-wrap gap-3">
 
               <Link
                 to="/faculty"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-sans text-sm font-semibold text-white bg-[#c9784a] hover:bg-[#b96845] transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#C9784A] px-5 py-2.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-[#B96845]"
               >
                 <span>Department Faculty</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
 
               <Link
                 to="/students"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-sans text-sm font-semibold text-stone-900 bg-white border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-5 py-2.5 font-sans text-sm font-semibold text-stone-900 transition-colors hover:border-stone-300 hover:bg-stone-50"
               >
                 <span>First Batch Students</span>
               </Link>
@@ -178,6 +219,7 @@ export default function About() {
             </div>
 
           </div>
+
 
           {/* Right Image */}
           <div className="lg:col-span-5 lg:pt-1">
@@ -187,16 +229,16 @@ export default function About() {
               <img
                 src={sbCollegeImg}
                 alt="St. Berchmans College Campus, Changanassery"
-                className="w-full h-[300px] sm:h-[350px] lg:h-[365px] object-cover"
+                className="h-[300px] w-full object-cover sm:h-[350px] lg:h-[365px]"
               />
 
-              <div className="px-5 py-3.5 text-center border-t border-stone-100 bg-white">
+              <div className="border-t border-stone-100 bg-white px-5 py-3.5 text-center">
 
                 <h3 className="font-sans text-base font-semibold text-stone-900">
                   St. Berchmans College
                 </h3>
 
-                <p className="font-sans text-[11px] text-stone-500 mt-0.5">
+                <p className="mt-0.5 font-sans text-[11px] text-stone-500">
                   Changanassery, Kottayam, Kerala 686101
                 </p>
 

@@ -202,9 +202,10 @@ export default function Home() {
       {/* =========================================================
           3. FACULTY SECTION
       ========================================================= */}
-      <section className="bg-[#f5f1ec] py-20 sm:py-24 border-y border-stone-200">
+      
+      <section className="faculty-texture-section py-20 sm:py-24 border-y border-stone-200">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
 
@@ -212,7 +213,7 @@ export default function Home() {
 
               <div className="flex items-center gap-3 mb-4">
 
-                <span className="w-10 h-px bg-[#c9784d]" />
+                <span className="w-10 h-px bg-[#c9784a]" />
 
                 <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
                   Department Leadership
@@ -222,7 +223,7 @@ export default function Home() {
 
               <h2 className="font-serif text-3xl sm:text-4xl text-stone-900">
                 MCA Department{' '}
-                <span className="text-[#c9784d]">
+                <span className="text-[#c9784a]">
                   Faculty
                 </span>
               </h2>
@@ -244,7 +245,7 @@ export default function Home() {
             >
               <span>View Faculty Page</span>
 
-              <ArrowRight className="w-4 h-4 text-[#c9784d]" />
+              <ArrowRight className="w-4 h-4 text-[#c9784a]" />
             </Link>
 
           </div>
@@ -263,7 +264,6 @@ export default function Home() {
         </div>
 
       </section>
-
       {/* =========================================================
           4. STUDENT SHOWCASE
       ========================================================= */}
@@ -342,9 +342,26 @@ export default function Home() {
       {/* =========================================================
           5. DEPARTMENT PORTALS
       ========================================================= */}
-      <section className="bg-[#171411] py-20 text-white relative">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative py-20 sm:py-24 text-white overflow-hidden"
+        style={{
+          backgroundColor: '#14110F',
+          backgroundImage: `
+            linear-gradient(
+              rgba(255, 255, 255, 0.045) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.045) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: '58px 58px',
+        }}
+      >
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <SectionTitle
             badge="Department Hub"
@@ -359,113 +376,221 @@ export default function Home() {
             {/* Academics */}
             <Link
               to="/academics"
-              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
+              className="
+                group flex flex-col justify-between
+                p-6 rounded-2xl
+                bg-[#211C19]
+                border border-white/[0.08]
+                hover:border-[#C96F45]/50
+                hover:bg-[#261F1C]
+                transition-all duration-300
+              "
             >
-
               <div>
 
-                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
+                <div
+                  className="
+                    w-11 h-11 rounded-xl
+                    bg-[#3FA7C7]/10
+                    border border-[#3FA7C7]/15
+                    text-[#3FA7C7]
+                    flex items-center justify-center
+                    mb-5
+                    group-hover:bg-[#3FA7C7]/15
+                    transition-colors
+                  "
+                >
                   <BookOpen className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
+                <h3 className="text-base font-bold text-white mb-2">
                   Academics
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-relaxed">
+                <p className="text-sm text-stone-400 leading-relaxed">
                   Academic information and syllabus structure for the MCA programme.
                 </p>
 
               </div>
 
-              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span
+                className="
+                  mt-6 text-xs font-semibold
+                  text-[#3FA7C7]
+                  flex items-center gap-1.5
+                  group-hover:translate-x-1
+                  transition-transform
+                "
+              >
                 View Academics
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
 
             </Link>
 
+
             {/* Projects */}
             <Link
               to="/projects"
-              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
+              className="
+                group flex flex-col justify-between
+                p-6 rounded-2xl
+                bg-[#211C19]
+                border border-white/[0.08]
+                hover:border-[#C96F45]/50
+                hover:bg-[#261F1C]
+                transition-all duration-300
+              "
             >
-
               <div>
 
-                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
+                <div
+                  className="
+                    w-11 h-11 rounded-xl
+                    bg-[#3FA7C7]/10
+                    border border-[#3FA7C7]/15
+                    text-[#3FA7C7]
+                    flex items-center justify-center
+                    mb-5
+                    group-hover:bg-[#3FA7C7]/15
+                    transition-colors
+                  "
+                >
                   <Code className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
+                <h3 className="text-base font-bold text-white mb-2">
                   Projects
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Student semester projects will be showcased here as coursework progresses.
+                <p className="text-sm text-stone-400 leading-relaxed">
+                  Student semester projects will be showcased here as coursework
+                  progresses.
                 </p>
 
               </div>
 
-              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span
+                className="
+                  mt-6 text-xs font-semibold
+                  text-[#3FA7C7]
+                  flex items-center gap-1.5
+                  group-hover:translate-x-1
+                  transition-transform
+                "
+              >
                 View Projects
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
 
             </Link>
 
+
             {/* Events */}
             <Link
               to="/events"
-              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
+              className="
+                group flex flex-col justify-between
+                p-6 rounded-2xl
+                bg-[#211C19]
+                border border-white/[0.08]
+                hover:border-[#C96F45]/50
+                hover:bg-[#261F1C]
+                transition-all duration-300
+              "
             >
-
               <div>
 
-                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
+                <div
+                  className="
+                    w-11 h-11 rounded-xl
+                    bg-[#C96F45]/10
+                    border border-[#C96F45]/15
+                    text-[#E08A5B]
+                    flex items-center justify-center
+                    mb-5
+                    group-hover:bg-[#C96F45]/15
+                    transition-colors
+                  "
+                >
                   <Calendar className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
+                <h3 className="text-base font-bold text-white mb-2">
                   Events
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-relaxed">
+                <p className="text-sm text-stone-400 leading-relaxed">
                   Departmental events and announcements for the new batch.
                 </p>
 
               </div>
 
-              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span
+                className="
+                  mt-6 text-xs font-semibold
+                  text-[#E08A5B]
+                  flex items-center gap-1.5
+                  group-hover:translate-x-1
+                  transition-transform
+                "
+              >
                 View Events
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
 
             </Link>
 
+
             {/* Gallery */}
             <Link
               to="/gallery"
-              className="p-6 rounded-2xl bg-[#211d1a] border border-stone-800 hover:border-[#c9784d] transition-all duration-200 group flex flex-col justify-between"
+              className="
+                group flex flex-col justify-between
+                p-6 rounded-2xl
+                bg-[#211C19]
+                border border-white/[0.08]
+                hover:border-[#C96F45]/50
+                hover:bg-[#261F1C]
+                transition-all duration-300
+              "
             >
-
               <div>
 
-                <div className="w-10 h-10 rounded-xl bg-[#c9784d]/15 text-[#e6a27e] flex items-center justify-center mb-4 group-hover:bg-[#c9784d] group-hover:text-white transition-colors">
+                <div
+                  className="
+                    w-11 h-11 rounded-xl
+                    bg-[#C96F45]/10
+                    border border-[#C96F45]/15
+                    text-[#E08A5B]
+                    flex items-center justify-center
+                    mb-5
+                    group-hover:bg-[#C96F45]/15
+                    transition-colors
+                  "
+                >
                   <Images className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-base font-bold text-white font-display mb-1.5 group-hover:text-[#e6a27e]">
+                <h3 className="text-base font-bold text-white mb-2">
                   Gallery
                 </h3>
 
-                <p className="text-xs text-stone-400 leading-relaxed">
+                <p className="text-sm text-stone-400 leading-relaxed">
                   Department and campus photo gallery for St. Berchmans College.
                 </p>
 
               </div>
 
-              <span className="mt-4 text-xs font-semibold text-[#e6a27e] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              <span
+                className="
+                  mt-6 text-xs font-semibold
+                  text-[#E08A5B]
+                  flex items-center gap-1.5
+                  group-hover:translate-x-1
+                  transition-transform
+                "
+              >
                 View Gallery
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -475,9 +600,7 @@ export default function Home() {
           </div>
 
         </div>
-
       </section>
-
       {/* =========================================================
           6. CALL TO ACTION
       ========================================================= */}
