@@ -691,8 +691,9 @@ export default function Home() {
               MCA Batch 2026–2028
             </h3>
 
-            <p className="max-w-xl text-xs text-stone-400 sm:text-sm">
+            <p className="max-w-xl text-xs sm:text-sm text-stone-400">
               Where our first MCA journey begins. Get in touch with the
+
               department for enquiries.
             </p>
 
