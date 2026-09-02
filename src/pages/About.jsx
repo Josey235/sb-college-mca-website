@@ -1,66 +1,34 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import PageHero from '../components/PageHero';
 import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 export default function About() {
   return (
     <div className="bg-[#f8f9f8] min-h-screen">
 
-      {/* Hero Header */}
-      <section
-        className="relative overflow-hidden border-b border-[#24201d] bg-[#14110F] py-16 text-white sm:py-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            )
-          `,
-          backgroundSize: '74px 74px',
-        }}
-      >
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          <div className="max-w-3xl space-y-3">
-
-            {/* Badge */}
-            <span className="inline-flex rounded-full border border-[#E08A5B]/40 bg-[#C96F45]/80 px-3.5 py-1 text-xs font-semibold text-white">
-              Department of Computer Applications
-            </span>
-
-            {/* Heading */}
-            <h1 className="font-display text-3xl font-extrabold leading-tight sm:text-5xl">
-              About{' '}
-              <span className="text-[#C96F45]">
-                MCA Programme
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
-              Master of Computer Applications (MCA) at St. Berchmans College,
-              Changanassery, Kerala.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
+      {/* =========================================================
+          HERO HEADER
+      ========================================================= */}
+      <PageHero
+        badge="Department of Computer Applications"
+        title="About"
+        highlight="MCA Programme"
+        description="Master of Computer Applications (MCA) at St. Berchmans College, Changanassery, Kerala."
+      />
 
 
-      {/* Main Content */}
+      {/* =========================================================
+          MAIN CONTENT
+      ========================================================= */}
       <main className="mx-auto max-w-7xl px-6 py-10 sm:py-12 lg:px-8">
 
         <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-12 lg:gap-12">
 
-          {/* Left Content */}
+          {/* =====================================================
+              LEFT CONTENT
+          ===================================================== */}
           <div className="lg:col-span-7">
 
             {/* Section Label */}
@@ -121,7 +89,9 @@ export default function About() {
             </div>
 
 
-            {/* Information Cards */}
+            {/* ===================================================
+                INFORMATION CARDS
+            =================================================== */}
             <div className="mt-7 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
 
               {/* Institution */}
@@ -198,7 +168,9 @@ export default function About() {
             </div>
 
 
-            {/* Navigation Buttons */}
+            {/* ===================================================
+                NAVIGATION BUTTONS
+            =================================================== */}
             <div className="mt-7 flex flex-wrap gap-3">
 
               <Link
@@ -221,7 +193,9 @@ export default function About() {
           </div>
 
 
-          {/* Right Image */}
+          {/* =====================================================
+              RIGHT IMAGE
+          ===================================================== */}
           <div className="lg:col-span-5 lg:pt-1">
 
             <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-lg">

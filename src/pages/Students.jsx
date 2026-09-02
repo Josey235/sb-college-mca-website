@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import StudentCard from '../components/StudentCard';
 import { supabase } from '../lib/supabase';
 import { AlertCircle, Loader2 } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
@@ -37,93 +38,20 @@ export default function Students() {
   return (
     <div className="min-h-screen bg-[#f8f9f8] pb-20">
 
-      {/* ================= HERO HEADER ================= */}
-      <section
-        className="
-          relative
-          overflow-hidden
-          border-b
-          border-navy-800
-          bg-[#14110F]
-          py-16
-          text-white
-          sm:py-20
-        "
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            )
-          `,
-          backgroundSize: '74px 74px',
-        }}
-      >
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          <div className="max-w-3xl space-y-3">
-
-            {/* Badge */}
-            <span
-              className="
-                inline-flex
-                rounded-full
-                border
-                border-[#c9784d]/60
-                bg-[#c9784d]
-                px-3.5
-                py-1.5
-                text-xs
-                font-semibold
-                text-white
-              "
-            >
-              Department Directory
-            </span>
-
-            {/* Heading */}
-            <h1
-              className="
-                text-3xl
-                font-extrabold
-                font-display
-                leading-tight
-                sm:text-5xl
-              "
-            >
-              MCA{' '}
-              <span className="text-[#c9784d]">
-                Students
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p
-              className="
-                text-sm
-                leading-relaxed
-                text-slate-300
-                sm:text-base
-              "
-            >
-              Inaugural cohort of the Master of Computer Applications
-              programme at St. Berchmans College, Changanassery
-              (Batch 2026–2028).
-            </p>
-
-          </div>
-
-        </div>
-      </section>
+      {/* =========================================================
+          HERO HEADER
+      ========================================================= */}
+      <PageHero
+        badge="Department Directory"
+        title="MCA"
+        highlight="Students"
+        description="Inaugural cohort of the Master of Computer Applications programme at St. Berchmans College, Changanassery (Batch 2026–2028)."
+      />
 
 
-      {/* ================= STUDENT CONTENT ================= */}
+      {/* =========================================================
+          STUDENT CONTENT
+      ========================================================= */}
       <main
         className="
           mx-auto

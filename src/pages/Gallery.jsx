@@ -1,186 +1,131 @@
 import React from 'react';
 import { Images } from 'lucide-react';
+
+import PageHero from '../components/PageHero';
 import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
 export default function Gallery() {
   return (
-    <div className="space-y-16 pb-20">
+    <div className="min-h-screen bg-[#f8f9f8] pb-20">
 
       {/* =========================================================
-          HERO HEADER
+          HERO
       ========================================================= */}
-      <div
-        className="
-          bg-[#14110F]
-          text-white
-          py-16 sm:py-20
-          relative
-          overflow-hidden
-          border-b border-[#211C19]
-        "
-      >
-
-        {/* Subtle Tech Grid */}
-        <div
-          className="absolute inset-0 opacity-[0.12] pointer-events-none"
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                rgba(255, 255, 255, 0.18) 1px,
-                transparent 1px
-              ),
-              linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.18) 1px,
-                transparent 1px
-              )
-            `,
-            backgroundSize: '58px 58px',
-          }}
-        />
-
-        {/* Hero Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="max-w-3xl space-y-3">
-
-            {/* Badge */}
-            <span
-              className="
-                inline-flex
-                px-3.5 py-1
-                rounded-full
-                text-xs
-                font-semibold
-                bg-[#C96F45]/20
-                text-[#E08A5B]
-                border border-[#C96F45]/40
-              "
-            >
-              Visual Archives
-            </span>
-
-            {/* Heading */}
-            <h1
-              className="
-                text-3xl
-                sm:text-5xl
-                font-extrabold
-                font-display
-                leading-tight
-              "
-            >
-              Department{' '}
-              <span className="text-[#C96F45]">
-                Gallery
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Photographs of St. Berchmans College and Department of
-              Computer Applications.
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-
+      <PageHero
+        badge="Visual Archives"
+        title="Department"
+        highlight="Gallery"
+        description="Photographs of St. Berchmans College and Department of Computer Applications."
+      />
 
       {/* =========================================================
           GALLERY CONTENT
       ========================================================= */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <main className="mx-auto max-w-4xl space-y-12 px-4 pt-10 sm:px-6 sm:pt-12 lg:px-8">
 
-        {/* Prominent Real Campus Image */}
+        {/* Campus Image */}
         <div
           className="
-            bg-white
             rounded-3xl
-            p-6
             border border-slate-200
+            bg-white
+            p-6
             shadow-card
           "
         >
-
           <div
             className="
-              rounded-2xl
               overflow-hidden
-              shadow-sm
-              bg-[#14110F]
+              rounded-2xl
               border border-slate-200
+              bg-[#14110F]
+              shadow-sm
             "
           >
             <img
               src={sbCollegeImg}
               alt="St. Berchmans College Campus, Changanassery"
               className="
+                h-80
                 w-full
-                h-80 sm:h-96
                 object-cover
                 object-center
+                sm:h-96
               "
             />
           </div>
 
           <div className="mt-4 text-center">
 
-            <h3 className="text-lg font-bold text-[#14110F] font-display">
+            <h3 className="font-display text-lg font-bold text-[#14110F]">
               St. Berchmans College Campus
             </h3>
 
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="mt-0.5 text-xs text-slate-500">
               Changanassery, Kottayam District, Kerala 686101
             </p>
 
           </div>
-
         </div>
 
 
-        {/* Empty State Notice */}
+        {/* Empty State */}
         <div
           className="
-            bg-white
-            rounded-3xl
-            p-8
-            border border-slate-200
-            shadow-card
-            text-center
             space-y-4
+            rounded-3xl
+            border border-slate-200
+            bg-white
+            p-8
+            text-center
+            shadow-card
           "
         >
 
+          {/* Icon */}
           <div
             className="
-              w-12 h-12
+              mx-auto
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
               rounded-2xl
+              border border-[#C96F45]/20
               bg-[#C96F45]/10
               text-[#C96F45]
-              mx-auto
-              flex items-center justify-center
-              border border-[#C96F45]/20
             "
           >
-            <Images className="w-6 h-6" />
+            <Images className="h-6 w-6" />
           </div>
 
+
+          {/* Text */}
           <div className="space-y-1.5">
 
             <h2
               className="
-                text-xl sm:text-2xl
+                font-display
+                text-xl
                 font-bold
                 text-[#14110F]
-                font-display
+                sm:text-2xl
               "
             >
               MCA Gallery Will Be Updated Soon
             </h2>
 
-            <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            <p
+              className="
+                mx-auto
+                max-w-md
+                text-xs
+                leading-relaxed
+                text-slate-600
+                sm:text-sm
+              "
+            >
               Photographs of departmental activities, lab sessions, and
               student moments for the inaugural{' '}
               <strong>Batch 2026–2028</strong> will be added here.
@@ -190,7 +135,7 @@ export default function Gallery() {
 
         </div>
 
-      </div>
+      </main>
 
     </div>
   );

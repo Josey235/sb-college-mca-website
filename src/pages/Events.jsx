@@ -8,38 +8,66 @@ export default function Events() {
       {/* =========================================================
           HERO HEADER
       ========================================================= */}
-      <div
+      <section
         className="
-          bg-[#14110F]
-          text-white
-          py-16 sm:py-20
           relative
           overflow-hidden
-          border-b border-[#211C19]
+          border-b border-[#24201d]
+          bg-[#14110F]
+          py-16
+          text-white
+          sm:py-20
         "
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255, 255, 255, 0.07) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.07) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              rgba(255, 255, 255, 0.018) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.018) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: `
+            74px 74px,
+            74px 74px,
+            148px 148px,
+            148px 148px
+          `,
+          backgroundPosition: `
+            0 0,
+            0 0,
+            0 0,
+            0 0
+          `,
+        }}
       >
 
-        {/* Subtle Grid */}
+        {/* Soft Glow Over Grid */}
         <div
-          className="absolute inset-0 opacity-[0.12] pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `
-              linear-gradient(
-                rgba(255, 255, 255, 0.18) 1px,
-                transparent 1px
-              ),
-              linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.18) 1px,
-                transparent 1px
-              )
-            `,
-            backgroundSize: '58px 58px',
+            background:
+              'radial-gradient(circle at 50% 45%, rgba(201, 111, 69, 0.055), transparent 65%)',
           }}
         />
 
+        {/* Subtle Dark Overlay */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+
         {/* Hero Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="max-w-3xl space-y-3">
 
@@ -47,13 +75,14 @@ export default function Events() {
             <span
               className="
                 inline-flex
-                px-3.5 py-1
                 rounded-full
+                border border-[#C96F45]/40
+                bg-[#C96F45]/20
+                px-3.5
+                py-1
                 text-xs
                 font-semibold
-                bg-[#C96F45]/20
                 text-[#E08A5B]
-                border border-[#C96F45]/40
               "
             >
               Department Engagements
@@ -62,11 +91,11 @@ export default function Events() {
             {/* Heading */}
             <h1
               className="
-                text-3xl
-                sm:text-5xl
-                font-extrabold
                 font-display
+                text-3xl
+                font-extrabold
                 leading-tight
+                sm:text-5xl
               "
             >
               MCA{' '}
@@ -76,7 +105,7 @@ export default function Events() {
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
               Seminars, technical sessions, and departmental activities at
               St. Berchmans College.
             </p>
@@ -84,40 +113,44 @@ export default function Events() {
           </div>
 
         </div>
-      </div>
+      </section>
 
 
       {/* =========================================================
           EVENTS CONTENT
       ========================================================= */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
         {/* Empty State Card */}
         <div
           className="
-            bg-white
-            rounded-3xl
-            p-8 sm:p-12
-            border border-slate-200
-            shadow-card
-            text-center
             space-y-6
+            rounded-3xl
+            border border-slate-200
+            bg-white
+            p-8
+            text-center
+            shadow-card
+            sm:p-12
           "
         >
 
           {/* Icon */}
           <div
             className="
-              w-16 h-16
+              mx-auto
+              flex
+              h-16
+              w-16
+              items-center
+              justify-center
               rounded-2xl
+              border border-[#C96F45]/20
               bg-[#C96F45]/10
               text-[#C96F45]
-              mx-auto
-              flex items-center justify-center
-              border border-[#C96F45]/20
             "
           >
-            <Calendar className="w-8 h-8" />
+            <Calendar className="h-8 w-8" />
           </div>
 
 
@@ -126,17 +159,17 @@ export default function Events() {
 
             <h2
               className="
+                font-display
                 text-2xl
-                sm:text-3xl
                 font-extrabold
                 text-[#14110F]
-                font-display
+                sm:text-3xl
               "
             >
               No MCA Events Have Been Added Yet
             </h2>
 
-            <p className="text-slate-600 text-sm max-w-lg mx-auto leading-relaxed">
+            <p className="mx-auto max-w-lg text-sm leading-relaxed text-slate-600">
               The MCA programme at St. Berchmans College began in 2026.
               Upcoming technical events, guest lectures, and student
               activities for the inaugural{' '}
@@ -149,12 +182,12 @@ export default function Events() {
           {/* Information Footer */}
           <div
             className="
-              p-4
-              rounded-2xl
-              bg-[#F7F4F1]
-              border border-[#E5DED8]
-              max-w-md
               mx-auto
+              max-w-md
+              rounded-2xl
+              border border-[#E5DED8]
+              bg-[#F7F4F1]
+              p-4
               text-xs
               text-slate-500
             "
@@ -167,7 +200,7 @@ export default function Events() {
 
         </div>
 
-      </div>
+      </main>
 
     </div>
   );

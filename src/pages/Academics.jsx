@@ -18,6 +18,8 @@ import {
   SYLLABUS_PDF_URL
 } from '../data/academics';
 
+import PageHero from '../components/PageHero';
+
 
 /* ─────────────────────────────────────────────
    Magnetic Button
@@ -204,52 +206,12 @@ export default function Academics() {
           HERO HEADER
       ═══════════════════════════════════════ */}
 
-      <section
-        className="relative overflow-hidden border-b border-[#24201d] bg-[#14110F] py-16 text-white sm:py-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.045) 1px,
-              transparent 1px
-            )
-          `,
-          backgroundSize: '74px 74px'
-        }}
-      >
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          <div className="max-w-3xl space-y-3">
-
-            {/* Badge */}
-            <span className="inline-flex rounded-full border border-[#E08A5B]/40 bg-[#C96F45]/80 px-3.5 py-1 text-xs font-semibold text-white">
-              MCA Curriculum
-            </span>
-
-            {/* Heading */}
-            <h1 className="font-display text-3xl font-extrabold leading-tight sm:text-5xl">
-              Curriculum &amp;{' '}
-              <span className="text-[#C9784A]">
-                Academics
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
-              Master of Computer Applications programme at
-              St. Berchmans College, Changanassery
-              (Batch 2026–2028).
-            </p>
-
-          </div>
-
-        </div>
-      </section>
+      <PageHero
+        badge="MCA Curriculum"
+        title="Curriculum &"
+        highlight="Academics"
+        description="Master of Computer Applications programme at St. Berchmans College, Changanassery (Batch 2026–2028)."
+      />
 
 
       {/* ═══════════════════════════════════════
@@ -553,7 +515,6 @@ export default function Academics() {
               >
 
                 <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-
 
                   {/* Semester Header */}
 
