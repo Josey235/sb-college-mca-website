@@ -457,11 +457,11 @@ export default function Home() {
                   className="
                     mb-5 flex h-11 w-11 items-center justify-center
                     rounded-xl
-                    border border-[#3FA7C7]/15
-                    bg-[#3FA7C7]/10
-                    text-[#3FA7C7]
+                    border border-[#C96F45]/15
+                    bg-[#C96F45]/10
+                    text-[#E08A5B]
                     transition-colors
-                    group-hover:bg-[#3FA7C7]/15
+                    group-hover:bg-[#C96F45]/15
                   "
                 >
                   <BookOpen className="h-5 w-5" />
@@ -480,7 +480,7 @@ export default function Home() {
               <span
                 className="
                   mt-6 flex items-center gap-1.5
-                  text-xs font-semibold text-[#3FA7C7]
+                  text-xs font-semibold text-[#E08A5B]
                   transition-transform
                   group-hover:translate-x-1
                 "
@@ -512,11 +512,11 @@ export default function Home() {
                   className="
                     mb-5 flex h-11 w-11 items-center justify-center
                     rounded-xl
-                    border border-[#3FA7C7]/15
-                    bg-[#3FA7C7]/10
-                    text-[#3FA7C7]
+                    border border-[#C96F45]/15
+                    bg-[#C96F45]/10
+                    text-[#E08A5B]
                     transition-colors
-                    group-hover:bg-[#3FA7C7]/15
+                    group-hover:bg-[#C96F45]/15
                   "
                 >
                   <Code className="h-5 w-5" />
@@ -536,7 +536,7 @@ export default function Home() {
               <span
                 className="
                   mt-6 flex items-center gap-1.5
-                  text-xs font-semibold text-[#3FA7C7]
+                  text-xs font-semibold text-[#E08A5B]
                   transition-transform
                   group-hover:translate-x-1
                 "
@@ -683,22 +683,39 @@ export default function Home() {
 
           <div className="space-y-2 text-center md:text-left">
 
-            <span className="mb-1 inline-block rounded-full bg-[#c9784d] px-3 py-0.5 text-xs font-bold text-white">
-              St. Berchmans College, Changanassery
+            {/* Department Hub Badge */}
+            <span
+              className="
+                mb-1
+                inline-flex
+                items-center
+                rounded-full
+                border border-[#c9784d]/50
+                bg-[#c9784d]/15
+                px-3.5
+                py-1
+                text-xs
+                font-bold
+                text-[#e08a5b]
+              "
+            >
+              Department Hub
             </span>
 
+            {/* Heading */}
             <h3 className="font-serif text-2xl text-white sm:text-3xl">
               MCA Batch 2026–2028
             </h3>
 
-            <p className="max-w-xl text-xs sm:text-sm text-stone-400">
+            {/* Description */}
+            <p className="max-w-xl text-xs text-stone-400 sm:text-sm">
               Where our first MCA journey begins. Get in touch with the
-
               department for enquiries.
             </p>
 
           </div>
 
+          {/* Contact Button */}
           <Link
             to="/contact"
             className="
@@ -708,7 +725,8 @@ export default function Home() {
               px-6 py-3.5
               text-xs font-bold text-stone-900
               shadow
-              transition-colors
+              transition-all duration-300
+              hover:-translate-y-0.5
               hover:bg-stone-100
               sm:text-sm
             "

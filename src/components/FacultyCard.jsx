@@ -31,7 +31,7 @@ export default function FacultyCard({ faculty }) {
       }`}
     >
       {/* ================= PHOTO AREA ================= */}
-      <div className="relative h-[300px] overflow-hidden bg-slate-100">
+      <div className="relative h-[300px] overflow-hidden bg-[#ded7cd]">
         {faculty.photo && !imageError ? (
           <img
             src={faculty.photo}

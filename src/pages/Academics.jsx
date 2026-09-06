@@ -184,7 +184,7 @@ function TypeBadge({ type }) {
 
   return (
     <span
-      className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wide ${cls}`}
+      className={`inline-block rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${cls}`}
     >
       {type}
     </span>
@@ -200,7 +200,7 @@ export default function Academics() {
   const [activeSem, setActiveSem] = useState(0);
 
   return (
-    <div className="bg-[#f8f9f8] min-h-screen pb-24">
+    <div className="min-h-screen pb-24">
 
       {/* ═══════════════════════════════════════
           HERO HEADER
@@ -234,7 +234,24 @@ export default function Academics() {
               download
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-[#C9784A] bg-[#C9784A] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#B96845]"
+              className="
+                inline-flex
+                cursor-pointer
+                items-center
+                gap-2
+                rounded-lg
+                border
+                border-[#C9784A]
+                bg-[#C9784A]
+                px-5
+                py-2.5
+                text-sm
+                font-semibold
+                text-white
+                shadow-md
+                transition-colors
+                hover:bg-[#B96845]
+              "
             >
               <Download className="h-4 w-4" />
               Download Complete Syllabus
@@ -244,7 +261,25 @@ export default function Academics() {
               href={SYLLABUS_PDF_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-stone-200 bg-white px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm transition-colors hover:border-stone-300 hover:bg-stone-50"
+              className="
+                inline-flex
+                cursor-pointer
+                items-center
+                gap-2
+                rounded-lg
+                border
+                border-[#d3cbc0]
+                bg-[#f1ede7]
+                px-5
+                py-2.5
+                text-sm
+                font-semibold
+                text-[#40382f]
+                shadow-sm
+                transition-colors
+                hover:border-[#c9784d]/50
+                hover:bg-[#ebe5dc]
+              "
             >
               <ExternalLink className="h-4 w-4 text-[#C9784A]" />
               View Syllabus
@@ -265,20 +300,20 @@ export default function Academics() {
 
                 <Calendar className="h-5 w-5 text-[#C9784A]" />
 
-                <h2 className="font-display text-2xl font-extrabold text-stone-900 sm:text-3xl">
+                <h2 className="font-display text-2xl font-extrabold text-[#40382f] sm:text-3xl">
                   {timetableInfo.title}
                 </h2>
 
               </div>
 
-              <p className="ml-8 text-sm text-stone-500">
+              <p className="ml-8 text-sm text-[#796b5c]">
                 {timetableInfo.batch} — {timetableInfo.description}
               </p>
 
             </div>
 
 
-            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-[#d3cbc0] bg-[#f1ede7] shadow-[0_6px_24px_rgba(72,61,49,0.05)]">
 
               <div className="overflow-x-auto">
 
@@ -322,12 +357,12 @@ export default function Academics() {
                         key={row.day}
                         className={
                           ri % 2 === 0
-                            ? 'bg-white'
-                            : 'bg-stone-50/70'
+                            ? 'bg-[#faf8f4]'
+                            : 'bg-[#f1ede7]'
                         }
                       >
 
-                        <td className="whitespace-nowrap border-r border-stone-200 px-4 py-3 text-sm font-extrabold text-stone-900">
+                        <td className="whitespace-nowrap border-r border-[#ded5ca] px-4 py-3 text-sm font-extrabold text-[#40382f]">
                           {row.day}
                         </td>
 
@@ -336,7 +371,7 @@ export default function Academics() {
 
                           <td
                             key={pi}
-                            className={`border-r border-stone-200 px-2 py-2.5 text-center last:border-r-0 ${
+                            className={`border-r border-[#ded5ca] px-2 py-2.5 text-center last:border-r-0 ${
                               p.isLab
                                 ? 'bg-[#F7E6DD]'
                                 : ''
@@ -363,12 +398,12 @@ export default function Academics() {
 
                               <div className="flex flex-col items-center gap-0.5">
 
-                                <span className="text-[12px] font-semibold text-stone-800">
+                                <span className="text-[12px] font-semibold text-[#40382f]">
                                   {p.subject}
                                 </span>
 
                                 {p.faculty && (
-                                  <span className="text-[10px] text-stone-500">
+                                  <span className="text-[10px] text-[#796b5c]">
                                     ({p.faculty})
                                   </span>
                                 )}
@@ -394,19 +429,19 @@ export default function Academics() {
 
               {/* Legend */}
 
-              <div className="border-t border-stone-200 bg-stone-50 px-4 py-4 sm:px-6">
+              <div className="border-t border-[#d3cbc0] bg-[#ebe5dc] px-4 py-4 sm:px-6">
 
                 <div className="mb-3 flex items-center gap-2">
 
                   <span className="inline-block h-3 w-3 rounded-sm border border-[#D9A98F] bg-[#E8C9B8]" />
 
-                  <span className="text-[11px] font-medium text-stone-500">
+                  <span className="text-[11px] font-medium text-[#796b5c]">
                     Highlighted cells = Lab sessions
                   </span>
 
                 </div>
 
-                <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-stone-400">
+                <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#9a8875]">
                   Faculty Legend
                 </p>
 
@@ -419,11 +454,11 @@ export default function Academics() {
                       className="flex items-start gap-2 text-[11px]"
                     >
 
-                      <span className="w-14 shrink-0 font-extrabold text-stone-800">
+                      <span className="w-14 shrink-0 font-extrabold text-[#40382f]">
                         {l.code}
                       </span>
 
-                      <span className="text-stone-600">
+                      <span className="text-[#796b5c]">
                         {l.name}
                       </span>
 
@@ -452,13 +487,13 @@ export default function Academics() {
 
                 <BookOpen className="h-5 w-5 text-[#C9784A]" />
 
-                <h2 className="font-display text-2xl font-extrabold text-stone-900 sm:text-3xl">
+                <h2 className="font-display text-2xl font-extrabold text-[#40382f] sm:text-3xl">
                   MCA Syllabus
                 </h2>
 
               </div>
 
-              <p className="ml-8 text-sm text-stone-500">
+              <p className="ml-8 text-sm text-[#796b5c]">
                 Course Structure &amp; Syllabus — 2-Year Regular MCA Programme
                 (Batch 2026–2028)
               </p>
@@ -478,7 +513,7 @@ export default function Academics() {
                   className={`rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                     activeSem === idx
                       ? 'border-[#C9784A] bg-[#C9784A] text-white shadow-md'
-                      : 'border-stone-200 bg-white text-stone-800 hover:border-[#C9784A]/50 hover:bg-[#FBF4F0]'
+                      : 'border-[#d3cbc0] bg-[#f1ede7] text-[#40382f] hover:border-[#C9784A]/50 hover:bg-[#ebe5dc]'
                   }`}
                 >
 
@@ -514,19 +549,19 @@ export default function Academics() {
                 }
               >
 
-                <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-2xl border border-[#d3cbc0] bg-[#f1ede7] shadow-[0_6px_24px_rgba(72,61,49,0.05)]">
 
                   {/* Semester Header */}
 
-                  <div className="flex flex-col justify-between gap-2 border-b border-stone-100 bg-gradient-to-r from-stone-50 to-white px-5 py-4 sm:flex-row sm:items-center sm:px-6">
+                  <div className="flex flex-col justify-between gap-2 border-b border-[#ded5ca] bg-gradient-to-r from-[#ebe5dc] to-[#faf8f4] px-5 py-4 sm:flex-row sm:items-center sm:px-6">
 
                     <div>
 
-                      <h3 className="font-display text-lg font-extrabold text-stone-900">
+                      <h3 className="font-display text-lg font-extrabold text-[#40382f]">
                         {sem.semester}
                       </h3>
 
-                      <p className="mt-0.5 text-xs text-stone-500">
+                      <p className="mt-0.5 text-xs text-[#796b5c]">
                         {sem.description}
                       </p>
 
@@ -556,7 +591,7 @@ export default function Academics() {
 
                       <thead>
 
-                        <tr className="border-b border-stone-200 bg-stone-50 text-xs uppercase tracking-wider text-stone-500">
+                        <tr className="border-b border-[#ded5ca] bg-[#ebe5dc] text-xs uppercase tracking-wider text-[#796b5c]">
 
                           <th className="px-5 py-3 text-left font-bold">
                             Course Code
@@ -583,7 +618,7 @@ export default function Academics() {
                       </thead>
 
 
-                      <tbody className="divide-y divide-stone-100">
+                      <tbody className="divide-y divide-[#ded5ca] bg-[#faf8f4]">
 
                         {sem.courses.map((course) => (
 
@@ -596,7 +631,7 @@ export default function Academics() {
                               {course.code}
                             </td>
 
-                            <td className="px-5 py-3.5 font-medium leading-snug text-stone-800">
+                            <td className="px-5 py-3.5 font-medium leading-snug text-[#40382f]">
                               {course.title}
                             </td>
 
@@ -604,7 +639,7 @@ export default function Academics() {
                               <TypeBadge type={course.type} />
                             </td>
 
-                            <td className="px-5 py-3.5 text-center font-semibold text-stone-600">
+                            <td className="px-5 py-3.5 text-center font-semibold text-[#796b5c]">
                               {typeof course.hours === 'number'
                                 ? `${course.hours}h`
                                 : course.hours}
@@ -651,7 +686,7 @@ export default function Academics() {
 
                   {/* Mobile Cards */}
 
-                  <div className="divide-y divide-stone-100 sm:hidden">
+                  <div className="divide-y divide-[#ded5ca] sm:hidden">
 
                     {sem.courses.map((course) => (
 
@@ -672,11 +707,11 @@ export default function Academics() {
 
                         </div>
 
-                        <p className="text-sm font-semibold leading-snug text-stone-800">
+                        <p className="text-sm font-semibold leading-snug text-[#40382f]">
                           {course.title}
                         </p>
 
-                        <div className="flex items-center gap-3 text-xs text-stone-500">
+                        <div className="flex items-center gap-3 text-xs text-[#796b5c]">
 
                           <TypeBadge type={course.type} />
 
@@ -721,14 +756,14 @@ export default function Academics() {
 
               <Award className="h-5 w-5 text-[#C9784A]" />
 
-              <h2 className="font-display text-2xl font-extrabold text-stone-900 sm:text-3xl">
+              <h2 className="font-display text-2xl font-extrabold text-[#40382f] sm:text-3xl">
                 Credit Summary
               </h2>
 
             </div>
 
 
-            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-[#d3cbc0] bg-[#f1ede7] shadow-[0_6px_24px_rgba(72,61,49,0.05)]">
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
@@ -736,7 +771,7 @@ export default function Academics() {
 
                   <div
                     key={item.semester}
-                    className={`border-stone-200 px-6 py-6 text-center ${
+                    className={`border-[#ded5ca] px-6 py-6 text-center ${
                       i < creditSummary.breakdown.length - 1
                         ? 'border-b sm:border-r lg:border-b-0'
                         : 'border-b-0'
@@ -747,15 +782,15 @@ export default function Academics() {
                       {item.credits}
                     </div>
 
-                    <div className="mt-1 text-[10px] uppercase tracking-wider text-stone-400">
+                    <div className="mt-1 text-[10px] uppercase tracking-wider text-[#9a8875]">
                       credits
                     </div>
 
-                    <div className="mt-2 text-sm font-semibold text-stone-900">
+                    <div className="mt-2 text-sm font-semibold text-[#40382f]">
                       {item.semester}
                     </div>
 
-                    <div className="mt-0.5 text-[11px] leading-snug text-stone-500">
+                    <div className="mt-0.5 text-[11px] leading-snug text-[#796b5c]">
                       {item.label}
                     </div>
 
@@ -799,13 +834,13 @@ export default function Academics() {
 
               <Lightbulb className="h-5 w-5 text-[#C9784A]" />
 
-              <h2 className="font-display text-2xl font-extrabold text-stone-900 sm:text-3xl">
+              <h2 className="font-display text-2xl font-extrabold text-[#40382f] sm:text-3xl">
                 Elective Courses
               </h2>
 
             </div>
 
-            <p className="mb-6 text-sm text-stone-500">
+            <p className="mb-6 text-sm text-[#796b5c]">
               Students choose one subject each from Group A (MCA ET 303)
               and Group B (MCA ET 304) in Semester III.
             </p>
@@ -816,7 +851,7 @@ export default function Academics() {
 
               {/* Group A */}
 
-              <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-[#d3cbc0] bg-[#f1ede7] shadow-[0_6px_24px_rgba(72,61,49,0.05)]">
 
                 <div className="border-b border-[#EAD6CA] bg-[#FBF1EC] px-5 py-4">
 
@@ -828,11 +863,11 @@ export default function Academics() {
                         Semester III
                       </span>
 
-                      <h3 className="mt-0.5 font-display font-extrabold text-stone-900">
+                      <h3 className="mt-0.5 font-display font-extrabold text-[#40382f]">
                         {electivesData.groupA.groupTitle}
                       </h3>
 
-                      <p className="mt-0.5 font-mono text-xs text-stone-500">
+                      <p className="mt-0.5 font-mono text-xs text-[#796b5c]">
                         {electivesData.groupA.code}
                       </p>
 
@@ -854,7 +889,7 @@ export default function Academics() {
                 </div>
 
 
-                <div className="divide-y divide-stone-100">
+                <div className="divide-y divide-[#ded5ca]">
 
                   {electivesData.groupA.courses.map((c) => (
 
@@ -867,11 +902,11 @@ export default function Academics() {
 
                       <div>
 
-                        <span className="font-mono text-[10px] text-stone-400">
+                        <span className="font-mono text-[10px] text-[#9a8875]">
                           {c.code}
                         </span>
 
-                        <p className="mt-0.5 text-sm font-semibold leading-snug text-stone-800">
+                        <p className="mt-0.5 text-sm font-semibold leading-snug text-[#40382f]">
                           {c.title}
                         </p>
 
@@ -888,7 +923,7 @@ export default function Academics() {
 
               {/* Group B */}
 
-              <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-[#d3cbc0] bg-[#f1ede7] shadow-[0_6px_24px_rgba(72,61,49,0.05)]">
 
                 <div className="border-b border-[#D7E3D8] bg-[#F1F6F1] px-5 py-4">
 
@@ -900,11 +935,11 @@ export default function Academics() {
                         Semester III
                       </span>
 
-                      <h3 className="mt-0.5 font-display font-extrabold text-stone-900">
+                      <h3 className="mt-0.5 font-display font-extrabold text-[#40382f]">
                         {electivesData.groupB.groupTitle}
                       </h3>
 
-                      <p className="mt-0.5 font-mono text-xs text-stone-500">
+                      <p className="mt-0.5 font-mono text-xs text-[#796b5c]">
                         {electivesData.groupB.code}
                       </p>
 
@@ -926,24 +961,24 @@ export default function Academics() {
                 </div>
 
 
-                <div className="divide-y divide-stone-100">
+                <div className="divide-y divide-[#ded5ca]">
 
                   {electivesData.groupB.courses.map((c) => (
 
                     <div
                       key={c.code}
-                      className="flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-stone-50"
+                      className="flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-[#f5f1eb]"
                     >
 
                       <ChevronRight className="h-4 w-4 shrink-0 text-emerald-600" />
 
                       <div>
 
-                        <span className="font-mono text-[10px] text-stone-400">
+                        <span className="font-mono text-[10px] text-[#9a8875]">
                           {c.code}
                         </span>
 
-                        <p className="mt-0.5 text-sm font-semibold leading-snug text-stone-800">
+                        <p className="mt-0.5 text-sm font-semibold leading-snug text-[#40382f]">
                           {c.title}
                         </p>
 
@@ -999,7 +1034,24 @@ export default function Academics() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#C9784A] bg-[#C9784A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#B96845]"
+                  className="
+                    inline-flex
+                    cursor-pointer
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-lg
+                    border
+                    border-[#C9784A]
+                    bg-[#C9784A]
+                    px-5
+                    py-2.5
+                    text-sm
+                    font-semibold
+                    text-white
+                    transition-colors
+                    hover:bg-[#B96845]
+                  "
                 >
                   <Download className="h-4 w-4" />
                   Download Syllabus
@@ -1010,7 +1062,24 @@ export default function Academics() {
                   href={SYLLABUS_PDF_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                  className="
+                    inline-flex
+                    cursor-pointer
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-lg
+                    border
+                    border-white/20
+                    bg-white/10
+                    px-5
+                    py-2.5
+                    text-sm
+                    font-semibold
+                    text-white
+                    transition-colors
+                    hover:bg-white/20
+                  "
                 >
                   <ExternalLink className="h-4 w-4" />
                   View Online
@@ -1027,7 +1096,7 @@ export default function Academics() {
               FOOTER NOTE
           ═══════════════════════════════════════ */}
 
-          <div className="border-t border-stone-200 pt-4 text-center text-xs text-stone-400">
+          <div className="border-t border-[#d3cbc0] pt-4 text-center text-xs text-[#9a8875]">
 
             St. Berchmans College, Changanassery
             &bull; Department of Computer Applications (MCA)

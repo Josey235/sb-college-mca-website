@@ -46,19 +46,18 @@ export default function Navbar() {
           MAIN NAVBAR
       ========================================================== */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 border-b border-[#302a25] bg-[#171411] text-white transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgba(45,39,35,0.06)] border-b border-stone-200'
-            : 'bg-white border-b border-stone-100'
+            ? 'shadow-[0_8px_30px_rgba(20,17,15,0.28)]'
+            : ''
         }`}
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+
+        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
 
           <div
             className={`flex items-center justify-between transition-all duration-300 ${
-              scrolled
-                ? 'py-3'
-                : 'py-4'
+              scrolled ? 'py-3' : 'py-4'
             }`}
           >
 
@@ -67,26 +66,47 @@ export default function Navbar() {
             ====================================================== */}
             <Link
               to="/"
-              className="flex items-center gap-3.5 group min-w-0"
+              className="group flex min-w-0 items-center gap-3.5"
             >
 
               {/* College Logo */}
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center">
+              <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center sm:h-14 sm:w-14">
+
                 <img
                   src={collegeLogo}
                   alt="St. Berchmans College"
-                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 />
+
               </div>
 
               {/* College Name */}
               <div className="min-w-0">
 
-                <span className="text-stone-900 font-display font-bold text-base sm:text-lg tracking-tight block leading-tight">
+                <span
+                  className="
+                    block
+                    font-display
+                    text-base
+                    font-bold
+                    leading-tight
+                    tracking-tight
+                    text-white
+                    sm:text-lg
+                  "
+                >
                   St. Berchmans College
                 </span>
 
-                <p className="text-[10px] sm:text-[11px] text-stone-500 font-medium mt-0.5">
+                <p
+                  className="
+                    mt-0.5
+                    text-[10px]
+                    font-medium
+                    text-stone-400
+                    sm:text-[11px]
+                  "
+                >
                   Department of Computer Applications (MCA)
                 </p>
 
@@ -94,33 +114,59 @@ export default function Navbar() {
 
             </Link>
 
+
             {/* =====================================================
                 DESKTOP NAVIGATION
             ====================================================== */}
-            <nav className="hidden lg:flex items-center gap-0.5">
+            <nav className="hidden items-center gap-0.5 lg:flex">
 
               {navLinks.map((link) => (
                 <NavLink
                   key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
-                    `relative px-2.5 xl:px-3 py-2.5 text-xs xl:text-sm font-medium transition-colors duration-200 ${
-                      isActive
-                        ? 'text-[#c9784d]'
-                        : 'text-stone-700 hover:text-[#c9784d]'
-                    }`
+                    `
+                      relative
+                      px-2.5
+                      py-2.5
+                      text-xs
+                      font-medium
+                      transition-colors
+                      duration-200
+                      xl:px-3
+                      xl:text-sm
+                      ${
+                        isActive
+                          ? 'text-[#e08a5b]'
+                          : 'text-stone-300 hover:text-white'
+                      }
+                    `
                   }
                 >
                   {({ isActive }) => (
                     <>
                       {link.name}
 
+                      {/* Active underline */}
                       <span
-                        className={`absolute left-2.5 right-2.5 xl:left-3 xl:right-3 -bottom-0.5 h-px bg-[#c9784d] transition-transform duration-200 origin-center ${
-                          isActive
-                            ? 'scale-x-100'
-                            : 'scale-x-0'
-                        }`}
+                        className={`
+                          absolute
+                          -bottom-0.5
+                          left-2.5
+                          right-2.5
+                          h-px
+                          origin-center
+                          bg-[#c9784d]
+                          transition-transform
+                          duration-200
+                          xl:left-3
+                          xl:right-3
+                          ${
+                            isActive
+                              ? 'scale-x-100'
+                              : 'scale-x-0'
+                          }
+                        `}
                       />
                     </>
                   )}
@@ -128,6 +174,7 @@ export default function Navbar() {
               ))}
 
             </nav>
+
 
             {/* =====================================================
                 MOBILE MENU BUTTON
@@ -137,14 +184,25 @@ export default function Navbar() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="p-2.5 rounded-full text-stone-700 border border-stone-200 hover:border-[#d89a7a] hover:text-[#b96843] hover:bg-[#fdf4ef] transition-all duration-200 focus:outline-none"
+                className="
+                  rounded-full
+                  border border-white/10
+                  p-2.5
+                  text-stone-300
+                  transition-all
+                  duration-200
+                  hover:border-[#c9784d]/50
+                  hover:bg-[#c9784d]/10
+                  hover:text-[#e08a5b]
+                  focus:outline-none
+                "
                 aria-label="Toggle Menu"
                 aria-expanded={isOpen}
               >
                 {isOpen ? (
-                  <X className="w-5 h-5" />
+                  <X className="h-5 w-5" />
                 ) : (
-                  <Menu className="w-5 h-5" />
+                  <Menu className="h-5 w-5" />
                 )}
               </button>
 
@@ -154,11 +212,23 @@ export default function Navbar() {
 
         </div>
 
+
         {/* =========================================================
             MOBILE DRAWER
         ========================================================== */}
         {isOpen && (
-          <div className="lg:hidden bg-[#faf8f5] border-t border-stone-200 border-b px-4 pt-4 pb-6 animate-fadeIn">
+          <div
+            className="
+              animate-fadeIn
+              border-t
+              border-[#302a25]
+              bg-[#171411]
+              px-4
+              pb-6
+              pt-4
+              lg:hidden
+            "
+          >
 
             <div className="space-y-1">
 
@@ -167,11 +237,22 @@ export default function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
-                    `flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium transition-all ${
-                      isActive
-                        ? 'text-[#b96843] bg-[#fdf1eb]'
-                        : 'text-stone-700 hover:text-[#b96843] hover:bg-white'
-                    }`
+                    `
+                      flex
+                      items-center
+                      justify-between
+                      rounded-lg
+                      px-4
+                      py-3
+                      text-sm
+                      font-medium
+                      transition-all
+                      ${
+                        isActive
+                          ? 'bg-[#c9784d]/15 text-[#e08a5b]'
+                          : 'text-stone-300 hover:bg-white/[0.04] hover:text-white'
+                      }
+                    `
                   }
                 >
                   {link.name}
@@ -180,16 +261,34 @@ export default function Navbar() {
 
             </div>
 
+
             {/* Mobile Student Button */}
-            <div className="mt-4 pt-4 border-t border-stone-200">
+            <div className="mt-4 border-t border-[#302a25] pt-4">
 
               <Link
                 to="/students"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-xs font-bold text-white bg-[#c9784d] hover:bg-[#b96843] transition-colors"
+                className="
+                  inline-flex
+                  w-full
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-lg
+                  bg-[#c9784d]
+                  px-4
+                  py-3
+                  text-xs
+                  font-bold
+                  text-white
+                  transition-colors
+                  hover:bg-[#b96843]
+                "
               >
-                <GraduationCap className="w-4 h-4" />
+
+                <GraduationCap className="h-4 w-4" />
 
                 MCA Students (Batch 2026–2028)
+
               </Link>
 
             </div>
