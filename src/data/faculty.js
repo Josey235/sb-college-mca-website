@@ -76,5 +76,50 @@ export const facultyMembers = [
     photo: "/images/faculty/sharon-shaji.jpg",
     photoFilename: "sharon-shaji.jpg",
     isPlaceholder: false
+  },
+  {
+    id: "fac-6",
+    name: "Ms. Annu Bindhu Benoy",
+    title: "Ms.",
+    designation: "Assistant Professor (Contract)",
+    role: null,
+    isHOD: false,
+    isTutor: false,
+    department: "Computer Science",
+    qualification: "MCA",
+    email: "annubindhubinoy@gmail.com",
+    photo: null,
+    photoFilename: null,
+    isPlaceholder: false
+  },
+  {
+    id: "fac-7",
+    name: "Dr. P Vijayalakshmi",
+    title: "Dr.",
+    designation: "Assistant Professor (Contract)",
+    role: null,
+    isHOD: false,
+    isTutor: false,
+    department: "Computer Science",
+    qualification: "M.Sc, M.Phil, Ph.D",
+    email: "ponniahvijayalakshmi@sbcollege.ac.in",
+    photo: null,
+    photoFilename: null,
+    isPlaceholder: false
+  },
+  {
+    id: "fac-8",
+    name: "Ms. Snehamol Selvaraj",
+    title: "Ms.",
+    designation: "Assistant Professor (Contract)",
+    role: null,
+    isHOD: false,
+    isTutor: false,
+    department: "Computer Science",
+    qualification: "MCA",
+    email: "snehamolselvaraj@gmail.com",
+    photo: null,
+    photoFilename: null,
+    isPlaceholder: false
   }
 ];
