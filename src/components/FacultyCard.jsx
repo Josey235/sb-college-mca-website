@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, GraduationCap, Building } from 'lucide-react';
+import { Mail, GraduationCap, Building } from 'lucide-react';
 
 export default function FacultyCard({ faculty }) {
   const [imageError, setImageError] = useState(false);
@@ -31,8 +31,7 @@ export default function FacultyCard({ faculty }) {
       }`}
     >
       {/* ================= PHOTO AREA ================= */}
-      <div className="relative h-[390px] overflow-hidden bg-slate-100">
-
+      <div className="relative h-[300px] overflow-hidden bg-slate-100">
         {faculty.photo && !imageError ? (
           <img
             src={faculty.photo}
@@ -42,8 +41,8 @@ export default function FacultyCard({ faculty }) {
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-academic-50 to-academic-100">
-            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/80 shadow-sm">
-              <span className="font-display text-4xl font-bold text-academic-800">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/80 shadow-sm">
+              <span className="font-display text-3xl font-bold text-academic-800">
                 {getInitials(faculty.name)}
               </span>
             </div>
@@ -51,29 +50,25 @@ export default function FacultyCard({ faculty }) {
         )}
 
         {/* Subtle top lighting */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/10 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/10 to-transparent" />
 
         {/* Bottom fade */}
         <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-white via-white/90 via-white/55 to-transparent" />
 
         {/* Smoke / Fog Layers */}
-        <div className="absolute -left-12 bottom-2 h-28 w-48 rounded-full bg-white/85 blur-3xl" />
-
-        <div className="absolute bottom-0 left-1/4 h-32 w-56 rounded-full bg-white/90 blur-3xl" />
-
-        <div className="absolute -right-12 bottom-2 h-28 w-48 rounded-full bg-white/85 blur-3xl" />
+        <div className="absolute -left-12 bottom-2 h-24 w-44 rounded-full bg-white/85 blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 h-28 w-52 rounded-full bg-white/90 blur-3xl" />
+        <div className="absolute -right-12 bottom-2 h-24 w-44 rounded-full bg-white/85 blur-3xl" />
 
         {/* Final fade */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/65 to-transparent" />
-
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/65 to-transparent" />
       </div>
 
       {/* ================= FACULTY INFORMATION ================= */}
-      <div className="relative -mt-16 px-6 pb-6 text-center">
+      <div className="relative -mt-12 px-5 pb-5 text-center">
 
         {/* Role Badge */}
-        <div className="relative z-10 mb-2 flex min-h-[28px] items-center justify-center">
-
+        <div className="relative z-10 mb-1.5 flex min-h-[26px] items-center justify-center">
           {faculty.isHOD ? (
             <span className="inline-flex rounded-full border border-amber-300 bg-amber-100 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-800 shadow-sm">
               Head of the Department
@@ -87,12 +82,11 @@ export default function FacultyCard({ faculty }) {
               &nbsp;
             </span>
           )}
-
         </div>
 
         {/* Faculty Name */}
         <h3
-          className={`relative z-10 mt-3 font-display text-xl font-bold leading-snug ${
+          className={`relative z-10 mt-2 font-display text-lg font-bold leading-snug ${
             isPlaceholder ? 'text-slate-400' : 'text-navy-900'
           }`}
         >
@@ -105,12 +99,10 @@ export default function FacultyCard({ faculty }) {
         </p>
 
         {/* Department & Qualification */}
-        <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-left">
-
+        <div className="mt-3 space-y-1.5 border-t border-slate-100 pt-3 text-left">
           {faculty.department && (
             <div className="flex items-center gap-2 text-xs text-slate-600">
               <Building className="h-3.5 w-3.5 shrink-0 text-academic-500" />
-
               <span className="truncate">
                 {faculty.department}
               </span>
@@ -120,20 +112,16 @@ export default function FacultyCard({ faculty }) {
           {faculty.qualification && (
             <div className="flex items-center gap-2 text-xs text-slate-600">
               <GraduationCap className="h-3.5 w-3.5 shrink-0 text-academic-500" />
-
               <span className="truncate font-medium text-slate-700">
                 {faculty.qualification}
               </span>
             </div>
           )}
-
         </div>
-
       </div>
 
       {/* ================= FOOTER / EMAIL ================= */}
-      <div className="border-t border-slate-100 bg-slate-50/60 px-6 py-3 text-center text-xs">
-
+      <div className="border-t border-slate-100 bg-slate-50/60 px-5 py-2.5 text-center text-xs">
         {faculty.email ? (
           <a
             href={`mailto:${faculty.email}`}
@@ -155,7 +143,6 @@ export default function FacultyCard({ faculty }) {
             St. Berchmans College
           </span>
         )}
-
       </div>
     </article>
   );
