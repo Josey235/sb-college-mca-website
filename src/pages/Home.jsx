@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import FacultyCard from '../components/FacultyCard';
 import StudentCard from '../components/StudentCard';
 import SectionTitle from '../components/SectionTitle';
-import { facultyMembers } from '../data/faculty';
 import { supabase } from '../lib/supabase';
 import sbCollegeImg from '../assets/images/college/sb-college.jpg';
 
@@ -17,11 +16,55 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
-  const displayFaculty = facultyMembers.slice(0, 4);
+  const [displayFaculty, setDisplayFaculty] = useState([]);
+  const [facultyLoading, setFacultyLoading] = useState(true);
+  const [facultyError, setFacultyError] = useState('');
 
   const [displayStudents, setDisplayStudents] = useState([]);
   const [studentsLoading, setStudentsLoading] = useState(true);
   const [studentsError, setStudentsError] = useState('');
+
+  useEffect(() => {
+    async function fetchFaculty() {
+      setFacultyLoading(true);
+      setFacultyError('');
+
+      const { data, error } = await supabase
+        .from('Faculty')
+        .select(
+          'id, created_at, name, title, designation, role, is_hod, is_tutor, department, qualification, email, photo_url, display_order'
+        )
+        .order('display_order', { ascending: true })
+        .limit(4);
+
+      if (error) {
+        console.error('Error fetching homepage faculty:', error);
+        setFacultyError('Unable to load faculty profiles right now.');
+        setDisplayFaculty([]);
+      } else {
+        const formattedFaculty = (data || []).map((faculty) => ({
+          ...faculty,
+
+          // Convert database field names to the names
+          // expected by FacultyCard.
+          isHOD: faculty.is_hod ?? false,
+          isTutor: faculty.is_tutor ?? false,
+
+          // FacultyCard expects `photo`.
+          photo: faculty.photo_url || null,
+
+          // These are real faculty records.
+          isPlaceholder: false,
+        }));
+
+        setDisplayFaculty(formattedFaculty);
+      }
+
+      setFacultyLoading(false);
+    }
+
+    fetchFaculty();
+  }, []);
 
   useEffect(() => {
     async function fetchStudents() {
@@ -223,12 +266,8 @@ export default function Home() {
               </h2>
 
               <p className="mt-3 max-w-2xl text-sm text-[#796b5c]">
-                Led by Head of Department{' '}
-                <strong className="text-[#51463b]">
-                  Mrs. Smitha Krishnan
-                </strong>
-                . Additional faculty members will be updated as department
-                details are added.
+                Meet the faculty members of the Department of Computer
+                Applications at St. Berchmans College.
               </p>
 
             </div>
@@ -253,16 +292,48 @@ export default function Home() {
 
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* DATABASE FACULTY */}
+          {facultyLoading ? (
 
-            {displayFaculty.map((faculty) => (
-              <FacultyCard
-                key={faculty.id}
-                faculty={faculty}
-              />
-            ))}
+            <div className="flex min-h-[220px] items-center justify-center">
+              <div className="flex items-center gap-3 text-sm text-[#796b5c]">
 
-          </div>
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#d5c8b8] border-t-[#c9784d]" />
+
+                <span>
+                  Loading faculty profiles...
+                </span>
+
+              </div>
+            </div>
+
+          ) : facultyError ? (
+
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-6 py-5 text-sm text-red-700">
+              {facultyError}
+            </div>
+
+          ) : displayFaculty.length === 0 ? (
+
+            <div className="rounded-2xl border border-[#d5c8b8] bg-[#f4ebdd] px-6 py-8 text-center text-sm text-[#796b5c]">
+              Faculty profiles will appear here once they are added to the
+              department database.
+            </div>
+
+          ) : (
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+              {displayFaculty.map((faculty) => (
+                <FacultyCard
+                  key={faculty.id}
+                  faculty={faculty}
+                />
+              ))}
+
+            </div>
+
+          )}
 
         </div>
 
@@ -742,4 +813,4 @@ export default function Home() {
 
     </div>
   );
-} 
+}
