@@ -4,8 +4,6 @@ import { Info } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import { supabase } from '../lib/supabase';
 
-const FACULTY_BUCKET = 'faculty-photos';
-
 export default function Faculty() {
   const [facultyMembers, setFacultyMembers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,51 +14,37 @@ export default function Faculty() {
       setLoading(true);
       setError('');
 
-      const { data, error } = await supabase
+      const { data, error: fetchError } = await supabase
         .from('Faculty')
         .select(
-          'id, created_at, name, title, designation, role, is_hod, is_tutor, department, qualification, email, photo_url, photo_filename, display_order'
+          'id, created_at, name, title, designation, role, is_hod, is_tutor, department, qualification, email, photo_url, display_order'
         )
         .order('display_order', { ascending: true });
 
-      if (error) {
-        console.error('Error fetching faculty:', error);
-        setError('Unable to load faculty profiles right now.');
+      if (fetchError) {
+        console.error('Error fetching faculty:', fetchError);
+        setError(
+          'Unable to load faculty profiles right now.'
+        );
         setFacultyMembers([]);
         setLoading(false);
         return;
       }
 
-      const formattedFaculty = (data || []).map((faculty) => {
-        let photo = faculty.photo_url || null;
+      const formattedFaculty = (data || []).map((faculty) => ({
+        ...faculty,
 
-        /*
-         * If photo_url is empty but photo_filename exists,
-         * generate the public Supabase Storage URL automatically.
-         */
-        if (!photo && faculty.photo_filename) {
-          const { data: publicUrlData } = supabase.storage
-            .from(FACULTY_BUCKET)
-            .getPublicUrl(faculty.photo_filename);
+        // Convert database field names to the names
+        // expected by FacultyCard.
+        isHOD: faculty.is_hod ?? false,
+        isTutor: faculty.is_tutor ?? false,
 
-          photo = publicUrlData?.publicUrl || null;
-        }
+        // FacultyCard expects `photo`.
+        photo: faculty.photo_url || null,
 
-        return {
-          ...faculty,
-
-          // Convert database field names to the names
-          // expected by FacultyCard.
-          isHOD: faculty.is_hod ?? false,
-          isTutor: faculty.is_tutor ?? false,
-
-          // PhotoCard expects `photo`.
-          photo,
-
-          // Real database faculty members are not placeholders.
-          isPlaceholder: false,
-        };
-      });
+        // These are real faculty records.
+        isPlaceholder: false,
+      }));
 
       setFacultyMembers(formattedFaculty);
       setLoading(false);
