@@ -374,7 +374,7 @@ export default function Hero() {
                   </h3>
 
                   <p className="text-[10px] text-stone-500 mt-0.5">
-                    Hands-on experience
+                    Hands-on experience.
                   </p>
                 </div>
 
