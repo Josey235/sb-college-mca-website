@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import {
   BookOpen,
   Calendar,
@@ -221,71 +222,6 @@ export default function Academics() {
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
 
         <div className="space-y-16">
-
-
-          {/* ═══════════════════════════════════════
-              QUICK ACTIONS
-          ═══════════════════════════════════════ */}
-
-          <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
-
-            <MagneticButton
-              href={SYLLABUS_PDF_URL}
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex
-                cursor-pointer
-                items-center
-                gap-2
-                rounded-lg
-                border
-                border-[#C9784A]
-                bg-[#C9784A]
-                px-5
-                py-2.5
-                text-sm
-                font-semibold
-                text-white
-                shadow-md
-                transition-colors
-                hover:bg-[#B96845]
-              "
-            >
-              <Download className="h-4 w-4" />
-              Download Complete Syllabus
-            </MagneticButton>
-
-            <MagneticButton
-              href={SYLLABUS_PDF_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex
-                cursor-pointer
-                items-center
-                gap-2
-                rounded-lg
-                border
-                border-[#d3cbc0]
-                bg-[#f1ede7]
-                px-5
-                py-2.5
-                text-sm
-                font-semibold
-                text-[#40382f]
-                shadow-sm
-                transition-colors
-                hover:border-[#c9784d]/50
-                hover:bg-[#ebe5dc]
-              "
-            >
-              <ExternalLink className="h-4 w-4 text-[#C9784A]" />
-              View Syllabus
-            </MagneticButton>
-
-          </div>
 
 
           {/* ═══════════════════════════════════════
