@@ -560,13 +560,6 @@ const book=document.getElementById('sbBook');
 const capBox=document.getElementById('sbCaptions');
 const hint=document.getElementById('sbHint');
 const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
-/*
- * Mobile/tablet launch mode:
- * Do not render page 0 and then switch to the landing page after load.
- * That creates a visible half-painted/shifted book on slower phones.
- * Instead, mobile starts directly on the landing spread.
- */
-const COARSE_LAUNCH=matchMedia('(max-width: 640px), (pointer: coarse)').matches;
 
 /* ------------------------------------------------ the turning leaf */
 const N=18;            /* strips — enough for a smooth curve          */
@@ -1099,48 +1092,19 @@ function startIntro(){
 
 /* ------------------------------------------------------------- boot */
 (async function boot(){
-  /*
-   * On mobile/coarse screens, preload the actual landing spread BEFORE
-   * painting the book. This prevents the first page from flashing and
-   * then being replaced by the landing spread after the layout has already
-   * been painted.
-   */
-  if(COARSE_LAUNCH && !Q.has('shot')){
-    const landing=PAGES[LAND];
-    const im=new Image();
-    im.src=landing.url;
-    if(im.decode)await im.decode().catch(()=>{});
-    else await new Promise(r=>{im.onload=im.onerror=r});
-
-    idx=LAND;
-    paint();
-    applyView();
-
-    if(document.fonts&&document.fonts.ready)await document.fonts.ready.catch(()=>{});
-    syncZoom();
-    restLoupe();
-
-    document.body.dataset.ready='1';
-    return;
-  }
-
   idx=Q.has('shot')?(parseInt(Q.get('shot'),10)||0)%M:0;
   paint();applyView();
-
   await Promise.all(PAGES.map(p=>{
     const im=new Image();im.src=p.url;
     return im.decode?im.decode().catch(()=>{}):new Promise(r=>{im.onload=im.onerror=r});
   }));
-
   if(document.fonts&&document.fonts.ready)await document.fonts.ready.catch(()=>{});
   syncZoom();restLoupe();
   document.body.dataset.ready='1';
-
   if(Q.has('shot')){
     if(Q.has('t')){startTurn(Q.get('dir')||'next',parseFloat(Q.get('t')));}
     return;
   }
-
   setTimeout(startIntro,220);
 })();
 </script>
