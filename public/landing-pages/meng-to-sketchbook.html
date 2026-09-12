@@ -133,29 +133,11 @@ button{font:inherit}
 /* The box is the book's own untransformed frame: the loupe lives here, on
    the desk, while only .sb-tilt leans and scales underneath it. */
 .sb-3d{
-  position:relative;
-  flex:1 1;
-  min-width:0;
-  max-width:900px;
-  aspect-ratio:1760 / 1240;
-  height:auto;
-
-  /*
-   * IMPORTANT:
-   * The page curl uses many nested rotateY transforms.
-   * A CSS perspective on this parent makes the top/bottom
-   * edges change their projected Y position while the leaf
-   * rotates, which is the vertical "pop" seen during the flip.
-   *
-   * The curl itself still uses real 3D rotateY transforms;
-   * we simply remove the perspective projection that causes
-   * the whole book to appear to jump vertically.
-   */
-  perspective:none;
+  position:relative;flex:1 1;min-width:0;max-width:900px;
+  perspective:1750px;perspective-origin:50% 46%;
 }
 .sb-tilt{
-  position:absolute;
-  inset:0;
+  position:relative;
   transform-style:preserve-3d;
   transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--zoom,1));
   will-change:transform;
@@ -734,39 +716,15 @@ function applyView(){
   if(view.z!==lastZ){lastZ=view.z;if(typeof placeLoupe==='function')placeLoupe();}
 }
 function viewSpring(){
-  /*
-   * IMPORTANT:
-   *
-   * While a page is turning, keep the
-   * book's outer view completely steady.
-   *
-   * The page-turn animation itself is
-   * still handled by applyTurn() and is
-   * NOT changed.
-   */
-  if(turn){
-    viewActive=false;
-    return false;
-  }
-
   const e=0.14;
   let moved=false;
-
   for(const [k,t] of [['rx','trx'],['ry','try_'],['z','tz']]){
     const d=view[t]-view[k];
-
-    if(Math.abs(d)>0.0006){
-      view[k]+=d*e;
-      moved=true;
-    }else{
-      view[k]=view[t];
-    }
+    if(Math.abs(d)>0.0006){view[k]+=d*e;moved=true;}
+    else view[k]=view[t];
   }
-
   if(moved)applyView();
-
   viewActive=moved;
-
   return moved;
 }
 function setView(rx,ry,z){
@@ -787,14 +745,6 @@ function tiltTo(cx,cy){
 }
 addEventListener('pointermove',e=>{
   if(e.pointerType==='touch')return;
-
-  /*
-   * Do not let the cursor move the outer book while
-   * a page is turning. The page animation must be the
-   * only movement during a flip.
-   */
-  if(turn)return;
-
   tiltTo(e.clientX,e.clientY);
 },{passive:true});
 addEventListener('pointerout',e=>{if(!e.relatedTarget)setView(0,0,view.tz)});
@@ -849,34 +799,10 @@ stage.addEventListener('pointercancel',endDrag);
 /* ------------------------------------------------------ turn control */
 function startTurn(dir,t){
   spring=null;
-
-  if(turn){
-    idx=turn.to;
-    turn=null;
-  }
-
-  /*
-   * Freeze the outer book before the page starts moving.
-   * This prevents cursor tilt from creating a vertical
-   * pop/jump during the page-turn animation.
-   */
-  view.rx=0;
-  view.ry=0;
-  view.trx=0;
-  view.try_=0;
-  applyView();
-
+  if(turn){idx=turn.to;turn=null;}      /* settle anything still in flight */
   if(typeof shoveLoupe==='function')shoveLoupe(dir);
-
   const from=idx;
-
-  turn={
-    dir:dir,
-    from:from,
-    to:dir==='next'?(from+1)%M:(from-1+M)%M,
-    t:t||0
-  };
-
+  turn={dir:dir,from:from,to:dir==='next'?(from+1)%M:(from-1+M)%M,t:t||0};
   paint();
 }
 function commit(){
@@ -1092,19 +1018,85 @@ function startIntro(){
 
 /* ------------------------------------------------------------- boot */
 (async function boot(){
-  idx=Q.has('shot')?(parseInt(Q.get('shot'),10)||0)%M:0;
-  paint();applyView();
+  const coarse=matchMedia('(max-width: 640px), (pointer: coarse)').matches;
+  const requestedIndex=Q.has('shot')
+    ? (parseInt(Q.get('shot'),10)||0)%M
+    : 0;
+
+  /*
+   * MOBILE / TOUCH:
+   *
+   * The old boot sequence painted the book BEFORE the Supabase image
+   * had finished loading. On a phone that first paint could contain only
+   * the book shadow; the real image appeared after the next interaction
+   * forced another compositor paint.
+   *
+   * For touch devices we therefore wait for the first spread to decode,
+   * then paint the book once in its final state. No opening riffle is
+   * started on mobile, so there is never a half-painted book on screen.
+   */
+  if(coarse && !Q.has('shot')){
+    idx=0;
+
+    const first=PAGES[idx];
+    if(first?.url){
+      const firstImage=new Image();
+      firstImage.src=first.url;
+
+      if(firstImage.decode){
+        await firstImage.decode().catch(()=>{});
+      }else{
+        await new Promise(resolve=>{
+          firstImage.onload=resolve;
+          firstImage.onerror=resolve;
+        });
+      }
+    }
+
+    paint();
+    applyView();
+
+    if(document.fonts&&document.fonts.ready){
+      await document.fonts.ready.catch(()=>{});
+    }
+
+    syncZoom();
+    restLoupe();
+
+    /*
+     * Paint again after fonts/layout are settled. This is intentional:
+     * the second paint is still the same final page, not an animated
+     * transition from a blank/incorrect spread.
+     */
+    requestAnimationFrame(()=>{
+      layout();
+      paint();
+      syncZoom();
+      placeLoupe();
+      document.body.dataset.ready='1';
+    });
+
+    return;
+  }
+
+  idx=requestedIndex;
+  paint();
+  applyView();
+
   await Promise.all(PAGES.map(p=>{
     const im=new Image();im.src=p.url;
     return im.decode?im.decode().catch(()=>{}):new Promise(r=>{im.onload=im.onerror=r});
   }));
+
   if(document.fonts&&document.fonts.ready)await document.fonts.ready.catch(()=>{});
   syncZoom();restLoupe();
   document.body.dataset.ready='1';
+
   if(Q.has('shot')){
     if(Q.has('t')){startTurn(Q.get('dir')||'next',parseFloat(Q.get('t')));}
     return;
   }
+
   setTimeout(startIntro,220);
 })();
 </script>
