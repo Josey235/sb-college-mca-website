@@ -16,6 +16,7 @@ import Faculty from './pages/Faculty';
 import Students from './pages/Students';
 import StudentProfile from './pages/StudentProfile';
 import Academics from './pages/Academics';
+import QuestionPapers from './pages/QuestionPapers';
 import Projects from './pages/Projects';
 import Events from './pages/Events';
 import Achievements from './pages/Achievements';
@@ -112,6 +113,15 @@ export default function App() {
           element={
             <PublicLayout>
               <Academics />
+            </PublicLayout>
+          }
+        />
+
+        <Route
+          path="/academics/question-papers"
+          element={
+            <PublicLayout>
+              <QuestionPapers />
             </PublicLayout>
           }
         />
