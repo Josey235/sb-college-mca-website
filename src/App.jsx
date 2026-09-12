@@ -26,12 +26,12 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import StudentManager from './pages/StudentManager';
 import FacultyManager from './pages/FacultyManager';
+import GalleryManager from './pages/GalleryManager';
 import AdminGuard from './components/admin/AdminGuard';
 
 function PublicLayout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 selection:bg-academic-600 selection:text-white font-sans antialiased">
-
       <Navbar />
 
       <main className="flex-1">
@@ -39,7 +39,6 @@ function PublicLayout({ children }) {
       </main>
 
       <Footer />
-
     </div>
   );
 }
@@ -55,7 +54,6 @@ function ProtectedAdminRoute({ children }) {
 export default function App() {
   return (
     <Router>
-
       <ScrollToTop />
 
       <Routes>
@@ -199,6 +197,15 @@ export default function App() {
           }
         />
 
+        <Route
+          path="/admin/gallery"
+          element={
+            <ProtectedAdminRoute>
+              <GalleryManager />
+            </ProtectedAdminRoute>
+          }
+        />
+
         {/* =====================================================
             FALLBACK
         ===================================================== */}
@@ -209,7 +216,6 @@ export default function App() {
         />
 
       </Routes>
-
     </Router>
   );
 }

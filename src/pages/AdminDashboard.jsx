@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BookOpen,
   GraduationCap,
+  Image,
   Loader2,
   LogOut,
   UserRound,
@@ -18,11 +19,14 @@ export default function AdminDashboard() {
   const [adminEmail, setAdminEmail] = useState('');
   const [studentCount, setStudentCount] = useState(null);
   const [facultyCount, setFacultyCount] = useState(null);
+  const [galleryCount, setGalleryCount] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [loggingOut, setLoggingOut] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
+
     async function loadDashboard() {
       setLoading(true);
 
@@ -35,11 +39,14 @@ export default function AdminDashboard() {
         return;
       }
 
+      if (!mounted) return;
+
       setAdminEmail(session.user.email || '');
 
       const [
         { count: studentsTotal, error: studentsError },
         { count: facultyTotal, error: facultyError },
+        { count: galleryTotal, error: galleryError },
       ] = await Promise.all([
         supabase
           .from('Students')
@@ -54,29 +61,40 @@ export default function AdminDashboard() {
             count: 'exact',
             head: true,
           }),
+
+        supabase
+          .from('Gallery')
+          .select('*', {
+            count: 'exact',
+            head: true,
+          }),
       ]);
 
       if (studentsError) {
-        console.error(
-          'Error loading student count:',
-          studentsError
-        );
+        console.error('Error loading student count:', studentsError);
       }
 
       if (facultyError) {
-        console.error(
-          'Error loading faculty count:',
-          facultyError
-        );
+        console.error('Error loading faculty count:', facultyError);
       }
+
+      if (galleryError) {
+        console.error('Error loading gallery count:', galleryError);
+      }
+
+      if (!mounted) return;
 
       setStudentCount(studentsTotal ?? 0);
       setFacultyCount(facultyTotal ?? 0);
-
+      setGalleryCount(galleryTotal ?? 0);
       setLoading(false);
     }
 
     loadDashboard();
+
+    return () => {
+      mounted = false;
+    };
   }, [navigate]);
 
   async function handleLogout() {
@@ -95,17 +113,20 @@ export default function AdminDashboard() {
     });
   }
 
+  const statValue = (value) =>
+    loading ? (
+      <Loader2 className="w-6 h-6 animate-spin text-stone-300" />
+    ) : (
+      value
+    );
+
   return (
     <div className="min-h-screen bg-[#f7f4ef] text-stone-900">
 
-      {/* Header */}
       <header className="border-b border-stone-200 bg-white">
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <div className="h-20 flex items-center justify-between">
 
-            {/* Brand */}
             <Link
               to="/admin"
               className="flex items-center gap-3"
@@ -125,7 +146,6 @@ export default function AdminDashboard() {
               </div>
             </Link>
 
-            {/* Account */}
             <div className="flex items-center gap-3">
 
               <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-50 border border-stone-100">
@@ -149,26 +169,19 @@ export default function AdminDashboard() {
                 )}
 
                 <span className="hidden sm:inline">
-                  {loggingOut
-                    ? 'Signing out...'
-                    : 'Sign out'}
+                  {loggingOut ? 'Signing out...' : 'Sign out'}
                 </span>
               </button>
 
             </div>
 
           </div>
-
         </div>
-
       </header>
 
-      {/* Main */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-        {/* Intro */}
         <section className="mb-10">
-
           <p className="text-[10px] uppercase tracking-[0.24em] font-bold text-[#c9784d]">
             Control Center
           </p>
@@ -178,37 +191,28 @@ export default function AdminDashboard() {
           </h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-stone-500">
-            Manage students, faculty and website content from one
+            Manage students, faculty and gallery content from one
             place. The public MCA website remains separate from this
             administration panel.
           </p>
-
         </section>
 
-        {/* Stats */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
 
-          {/* Students */}
           <Link
             to="/admin/students"
             className="group bg-white rounded-2xl border border-stone-200 p-6 shadow-[0_8px_30px_rgba(45,39,35,0.04)] hover:shadow-[0_15px_40px_rgba(45,39,35,0.08)] hover:border-[#dec1af] transition-all"
           >
             <div className="flex items-center justify-between">
-
               <div className="w-11 h-11 rounded-xl bg-[#f8eee8] flex items-center justify-center">
                 <Users className="w-5 h-5 text-[#c9784d]" />
               </div>
 
               <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
-
             </div>
 
             <p className="mt-6 text-3xl font-semibold text-stone-900">
-              {loading ? (
-                <Loader2 className="w-6 h-6 animate-spin text-stone-300" />
-              ) : (
-                studentCount
-              )}
+              {statValue(studentCount)}
             </p>
 
             <p className="mt-1 text-sm text-stone-500">
@@ -220,28 +224,20 @@ export default function AdminDashboard() {
             </p>
           </Link>
 
-          {/* Faculty */}
           <Link
             to="/admin/faculty"
             className="group bg-white rounded-2xl border border-stone-200 p-6 shadow-[0_8px_30px_rgba(45,39,35,0.04)] hover:shadow-[0_15px_40px_rgba(45,39,35,0.08)] hover:border-[#dec1af] transition-all"
           >
-
             <div className="flex items-center justify-between">
-
               <div className="w-11 h-11 rounded-xl bg-[#f8eee8] flex items-center justify-center">
                 <UserRound className="w-5 h-5 text-[#c9784d]" />
               </div>
 
               <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
-
             </div>
 
             <p className="mt-6 text-3xl font-semibold text-stone-900">
-              {loading ? (
-                <Loader2 className="w-6 h-6 animate-spin text-stone-300" />
-              ) : (
-                facultyCount
-              )}
+              {statValue(facultyCount)}
             </p>
 
             <p className="mt-1 text-sm text-stone-500">
@@ -251,31 +247,36 @@ export default function AdminDashboard() {
             <p className="mt-3 text-[11px] font-semibold text-[#c9784d]">
               Open Faculty Manager →
             </p>
-
           </Link>
 
-          {/* Content */}
-          <div className="bg-stone-900 rounded-2xl p-6 text-white shadow-[0_8px_30px_rgba(45,39,35,0.08)]">
+          <Link
+            to="/admin/gallery"
+            className="group bg-white rounded-2xl border border-stone-200 p-6 shadow-[0_8px_30px_rgba(45,39,35,0.04)] hover:shadow-[0_15px_40px_rgba(45,39,35,0.08)] hover:border-[#dec1af] transition-all"
+          >
+            <div className="flex items-center justify-between">
+              <div className="w-11 h-11 rounded-xl bg-[#f8eee8] flex items-center justify-center">
+                <Image className="w-5 h-5 text-[#c9784d]" />
+              </div>
 
-            <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
+              <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
             </div>
 
-            <p className="mt-6 text-lg font-semibold">
-              Content Management
+            <p className="mt-6 text-3xl font-semibold text-stone-900">
+              {statValue(galleryCount)}
             </p>
 
-            <p className="mt-1 text-sm text-stone-400">
-              Students and faculty are now manageable from the admin panel.
+            <p className="mt-1 text-sm text-stone-500">
+              Gallery photographs
             </p>
 
-          </div>
+            <p className="mt-3 text-[11px] font-semibold text-[#c9784d]">
+              Open Gallery Manager →
+            </p>
+          </Link>
 
         </section>
 
-        {/* Management */}
         <section>
-
           <div className="mb-5">
             <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400">
               Management
@@ -286,22 +287,18 @@ export default function AdminDashboard() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-            {/* Student Manager */}
             <Link
               to="/admin/students"
               className="group bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-[0_15px_40px_rgba(45,39,35,0.07)] hover:border-[#dec1af] transition-all"
             >
-
               <div className="flex items-start justify-between">
-
                 <div className="w-12 h-12 rounded-xl bg-stone-100 flex items-center justify-center">
                   <Users className="w-5 h-5 text-stone-700" />
                 </div>
 
                 <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
-
               </div>
 
               <h4 className="mt-6 text-xl font-semibold">
@@ -317,23 +314,18 @@ export default function AdminDashboard() {
                 Manage Students
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
-
             </Link>
 
-            {/* Faculty Manager */}
             <Link
               to="/admin/faculty"
               className="group bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-[0_15px_40px_rgba(45,39,35,0.07)] hover:border-[#dec1af] transition-all"
             >
-
               <div className="flex items-start justify-between">
-
                 <div className="w-12 h-12 rounded-xl bg-stone-100 flex items-center justify-center">
                   <UserRound className="w-5 h-5 text-stone-700" />
                 </div>
 
                 <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
-
               </div>
 
               <h4 className="mt-6 text-xl font-semibold">
@@ -341,24 +333,66 @@ export default function AdminDashboard() {
               </h4>
 
               <p className="mt-2 text-sm leading-relaxed text-stone-500">
-                Add, edit, delete and upload profile photos for
-                faculty members, including their roles,
-                qualifications and contact details.
+                Add, edit, delete and upload faculty profile photos,
+                roles, qualifications and contact details.
               </p>
 
               <div className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-[#c9784d]">
                 Manage Faculty
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
+            </Link>
 
+            <Link
+              to="/admin/gallery"
+              className="group bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-[0_15px_40px_rgba(45,39,35,0.07)] hover:border-[#dec1af] transition-all"
+            >
+              <div className="flex items-start justify-between">
+                <div className="w-12 h-12 rounded-xl bg-stone-100 flex items-center justify-center">
+                  <Image className="w-5 h-5 text-stone-700" />
+                </div>
+
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#c9784d] group-hover:translate-x-1 transition-all" />
+              </div>
+
+              <h4 className="mt-6 text-xl font-semibold">
+                Gallery Manager
+              </h4>
+
+              <p className="mt-2 text-sm leading-relaxed text-stone-500">
+                Upload, edit, reorder and delete the photographs used
+                by the public MCA sketchbook gallery.
+              </p>
+
+              <div className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-[#c9784d]">
+                Manage Gallery
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
             </Link>
 
           </div>
+        </section>
 
+        <section className="mt-8 rounded-2xl bg-stone-900 p-6 text-white shadow-[0_8px_30px_rgba(45,39,35,0.08)]">
+          <div className="flex items-start gap-4">
+            <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-white" />
+            </div>
+
+            <div>
+              <p className="text-lg font-semibold">
+                Content Management
+              </p>
+
+              <p className="mt-1 max-w-2xl text-sm leading-relaxed text-stone-400">
+                Students, faculty and gallery photographs are now
+                connected to the protected administration panel.
+              </p>
+            </div>
+          </div>
         </section>
 
       </main>
-
     </div>
   );
 }
