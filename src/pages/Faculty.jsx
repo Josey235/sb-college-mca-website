@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import FacultyCard from '../components/FacultyCard';
-import { Info } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import { supabase } from '../lib/supabase';
 
@@ -23,9 +22,11 @@ export default function Faculty() {
 
       if (fetchError) {
         console.error('Error fetching faculty:', fetchError);
+
         setError(
           'Unable to load faculty profiles right now.'
         );
+
         setFacultyMembers([]);
         setLoading(false);
         return;
@@ -54,7 +55,7 @@ export default function Faculty() {
   }, []);
 
   return (
-    <div className="space-y-16 pb-20">
+    <div className="pb-20">
 
       {/* =========================================================
           HERO HEADER
@@ -69,34 +70,36 @@ export default function Faculty() {
       {/* =========================================================
           MAIN CONTENT
       ========================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div
+        className="
+          mx-auto
+          max-w-7xl
+          px-4
+          pt-10
+          sm:px-6
+          sm:pt-11
+          lg:px-8
+        "
+      >
 
-        {/* Department Information */}
-        <div className="p-4 rounded-2xl bg-academic-50 border border-academic-200 text-xs sm:text-sm text-academic-900 flex items-start gap-3">
-
-          <Info className="w-5 h-5 text-academic-600 shrink-0 mt-0.5" />
-
-          <div>
-            <p className="font-semibold text-navy-900">
-              Department Leadership
-            </p>
-
-            <p className="text-slate-600 mt-0.5">
-              The MCA Department faculty profiles are loaded directly from
-              the department database.
-            </p>
-          </div>
-
-        </div>
-
-        {/* =========================================================
+        {/* =====================================================
             LOADING STATE
-        ========================================================= */}
+        ===================================================== */}
         {loading && (
-          <div className="min-h-[220px] flex items-center justify-center">
+          <div className="flex min-h-[220px] items-center justify-center">
             <div className="flex items-center gap-3 text-sm text-stone-500">
 
-              <div className="w-5 h-5 border-2 border-stone-300 border-t-[#c9784d] rounded-full animate-spin" />
+              <div
+                className="
+                  h-5
+                  w-5
+                  animate-spin
+                  rounded-full
+                  border-2
+                  border-stone-300
+                  border-t-[#c9784d]
+                "
+              />
 
               <span>
                 Loading faculty profiles...
@@ -106,39 +109,67 @@ export default function Faculty() {
           </div>
         )}
 
-        {/* =========================================================
+        {/* =====================================================
             ERROR STATE
-        ========================================================= */}
+        ===================================================== */}
         {!loading && error && (
-          <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
+          <div
+            className="
+              rounded-2xl
+              border
+              border-red-200
+              bg-red-50
+              px-5
+              py-4
+              text-sm
+              text-red-700
+            "
+          >
             {error}
           </div>
         )}
 
-        {/* =========================================================
+        {/* =====================================================
             EMPTY STATE
-        ========================================================= */}
+        ===================================================== */}
         {!loading && !error && facultyMembers.length === 0 && (
-          <div className="min-h-[220px] flex items-center justify-center rounded-2xl border border-stone-200 bg-white">
+          <div
+            className="
+              flex
+              min-h-[220px]
+              items-center
+              justify-center
+              rounded-2xl
+              border
+              border-stone-200
+              bg-white
+            "
+          >
             <p className="text-sm text-stone-500">
               No faculty profiles are available yet.
             </p>
           </div>
         )}
 
-        {/* =========================================================
+        {/* =====================================================
             FACULTY CARDS
-        ========================================================= */}
+        ===================================================== */}
         {!loading && !error && facultyMembers.length > 0 && (
-          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
-
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-7
+              sm:grid-cols-2
+              lg:grid-cols-4
+            "
+          >
             {facultyMembers.map((faculty) => (
               <FacultyCard
                 key={faculty.id}
                 faculty={faculty}
               />
             ))}
-
           </div>
         )}
 

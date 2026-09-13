@@ -2,7 +2,6 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { Images } from 'lucide-react';
 
 import PageHero from '../components/PageHero';
 import BookGallery from '../components/BookGallery';
@@ -128,6 +127,9 @@ export default function Gallery() {
   return (
     <div className="min-h-screen bg-[#ece7dc] pb-24 text-[#2b2721]">
 
+      {/* =========================================================
+          PAGE HERO
+      ========================================================= */}
       <PageHero
         badge="Visual Archives"
         title="Department"
@@ -135,23 +137,100 @@ export default function Gallery() {
         description="A visual archive of the St. Berchmans College MCA Department."
       />
 
-      <main className="mx-auto max-w-[1240px] px-4 pt-10 sm:px-6 sm:pt-14 lg:px-8">
+      {/* =========================================================
+          MAIN GALLERY CONTENT
+          
+          Reduced top spacing so the Sketchbook section starts
+          much closer to the PageHero.
+      ========================================================= */}
+      <main
+        className="
+          mx-auto
+          max-w-[1240px]
+          px-4
+          pt-5
+          sm:px-6
+          sm:pt-6
+          lg:px-8
+        "
+      >
 
-        <section className="relative overflow-hidden border-b border-[#2b2721]/10 pb-10">
+        {/* =====================================================
+            SKETCHBOOK INTRO
+        ===================================================== */}
+        <section
+          className="
+            relative
+            overflow-hidden
+            border-b
+            border-[#2b2721]/10
+            pb-7
+            sm:pb-8
+          "
+        >
 
-          <div className="pointer-events-none absolute -left-16 -top-12 h-48 w-48 rounded-full bg-[#d7c8ad]/30 blur-3xl" />
+          {/* Decorative paper glow */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -left-16
+              -top-12
+              h-48
+              w-48
+              rounded-full
+              bg-[#d7c8ad]/30
+              blur-3xl
+            "
+          />
 
-          <div className="relative mx-auto max-w-3xl text-center">
+          <div
+            className="
+              relative
+              mx-auto
+              max-w-3xl
+              text-center
+            "
+          >
 
-            <p className="text-[10px] font-medium uppercase tracking-[0.34em] text-[#7f766b]">
+            {/* Small label */}
+            <p
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.34em]
+                text-[#7f766b]
+              "
+            >
               SB College · MCA
             </p>
 
-            <h2 className="mt-4 font-serif text-4xl leading-none text-[#2b2721] sm:text-5xl">
+            {/* Main title */}
+            <h2
+              className="
+                mt-3
+                font-serif
+                text-4xl
+                leading-none
+                text-[#2b2721]
+                sm:text-5xl
+              "
+            >
               The Department Sketchbook
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#71685e]">
+            {/* Description */}
+            <p
+              className="
+                mx-auto
+                mt-3
+                max-w-xl
+                text-sm
+                leading-relaxed
+                text-[#71685e]
+              "
+            >
               A living collection of photographs from the Department
               of Computer Applications. Turn the pages to explore.
             </p>
@@ -160,9 +239,16 @@ export default function Gallery() {
 
         </section>
 
+        {/* =====================================================
+            BOOK GALLERY
+        ===================================================== */}
         <section
           id="mca-sketchbook"
-          className="relative py-12 sm:py-16"
+          className="
+            relative
+            py-8
+            sm:py-10
+          "
         >
           <BookGallery
             images={gallery}

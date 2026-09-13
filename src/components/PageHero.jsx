@@ -9,12 +9,13 @@ export default function PageHero({
   return (
     <div
       className="
-        bg-[#14110F]
-        text-white
-        py-16 sm:py-20
         relative
         overflow-hidden
-        border-b border-[#211C19]
+        border-b
+        border-[#211C19]
+        bg-[#14110F]
+        py-9
+        sm:py-11
       "
       style={{
         backgroundImage: `
@@ -45,48 +46,82 @@ export default function PageHero({
         `,
       }}
     >
-
-      {/* Soft orange glow */}
+      {/* =====================================================
+          SOFT ORANGE GLOW
+      ===================================================== */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+        "
         style={{
           background:
             'radial-gradient(circle at 50% 45%, rgba(201, 111, 69, 0.055), transparent 65%)',
         }}
       />
 
-      {/* Subtle dark overlay */}
-      <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+      {/* =====================================================
+          SUBTLE DARK OVERLAY
+      ===================================================== */}
+      <div
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+          bg-black/10
+        "
+      />
 
-      {/* Hero Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* =====================================================
+          HERO CONTENT
+      ===================================================== */}
+      <div
+        className="
+          relative
+          mx-auto
+          max-w-7xl
+          px-4
+          sm:px-6
+          lg:px-8
+        "
+      >
+        <div className="max-w-3xl space-y-2.5">
 
-        <div className="max-w-3xl space-y-3">
-
-          {/* Badge */}
+          {/* =================================================
+              BADGE
+          ================================================= */}
           <span
             className="
               inline-flex
-              px-3.5 py-1
               rounded-full
+              border
+              border-[#C96F45]/40
+              bg-[#C96F45]/20
+              px-3.5
+              py-1
               text-xs
               font-semibold
-              bg-[#C96F45]/20
               text-[#E08A5B]
-              border border-[#C96F45]/40
             "
           >
             {badge}
           </span>
 
-          {/* Heading */}
+          {/* =================================================
+              HEADING
+
+              Explicit text-white prevents global heading
+              styles from changing the title color.
+          ================================================= */}
           <h1
             className="
               text-3xl
-              sm:text-5xl
               font-extrabold
-              font-display
               leading-tight
+              font-display
+              text-white
+              sm:text-5xl
             "
           >
             {title}{' '}
@@ -96,14 +131,22 @@ export default function PageHero({
             </span>
           </h1>
 
-          {/* Description */}
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          {/* =================================================
+              DESCRIPTION
+          ================================================= */}
+          <p
+            className="
+              text-sm
+              leading-relaxed
+              text-slate-300
+              sm:text-base
+            "
+          >
             {description}
           </p>
 
         </div>
       </div>
-
     </div>
   );
 }
