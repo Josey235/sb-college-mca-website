@@ -123,22 +123,23 @@ export default function FacultyCard({ faculty }) {
         )}
 
         {/* =====================================================
-            SUBTLE PHOTO TONE
+            VERY SUBTLE PHOTO TONE
         ===================================================== */}
         <div
           className="
             pointer-events-none
             absolute
             inset-0
-            bg-[#766653]/[0.025]
+            bg-[#766653]/[0.02]
             mix-blend-multiply
           "
         />
 
         {/* =====================================================
-            SOFT PHOTO → PAPER FADE
+            CLEAN PHOTO → PAPER FADE
 
-            Same paper color as the details section.
+            No blurred cloud effects.
+            The real torn-paper PNG handles the edge.
         ===================================================== */}
         <div
           className="
@@ -146,66 +147,17 @@ export default function FacultyCard({ faculty }) {
             absolute
             inset-x-0
             bottom-0
-            h-[38%]
+            h-[32%]
             bg-gradient-to-t
             from-[#f1ede7]
-            via-[#f1ede7]/70
+            via-[#f1ede7]/55
             to-transparent
-          "
-        />
-
-        {/* Left organic fade */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            bottom-[-12px]
-            left-[-10%]
-            h-24
-            w-[48%]
-            rounded-full
-            bg-[#f1ede7]/50
-            blur-2xl
-          "
-        />
-
-        {/* Center organic fade */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            bottom-[-15px]
-            left-[28%]
-            h-28
-            w-[44%]
-            rounded-full
-            bg-[#f1ede7]/35
-            blur-3xl
-          "
-        />
-
-        {/* Right organic fade */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            bottom-[-12px]
-            right-[-10%]
-            h-24
-            w-[48%]
-            rounded-full
-            bg-[#f1ede7]/50
-            blur-2xl
           "
         />
       </div>
 
       {/* =========================================================
           PAPER INFORMATION SECTION
-
-          IMPORTANT:
-          This is now the SAME warm paper color used by
-          StudentCard.
       ========================================================= */}
       <div
         className="
@@ -239,11 +191,10 @@ export default function FacultyCard({ faculty }) {
         />
 
         {/* =====================================================
-            BLEND THE PNG INTO THE PAPER
+            SOFT PAPER BLEND
 
-            Same exact color as the paper.
-            This prevents the rectangular edge of the PNG
-            from becoming visible.
+            This only blends the lower part of the PNG.
+            It does NOT create a cloud effect.
         ===================================================== */}
         <div
           aria-hidden="true"
@@ -257,7 +208,7 @@ export default function FacultyCard({ faculty }) {
             h-[18px]
             bg-gradient-to-b
             from-transparent
-            via-[#f1ede7]/55
+            via-[#f1ede7]/45
             to-[#f1ede7]
           "
         />

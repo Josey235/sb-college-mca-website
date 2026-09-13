@@ -32,7 +32,7 @@ export default function StudentCard({ student }) {
       "
     >
       {/* =========================================================
-          PHOTO
+          PHOTO SECTION
       ========================================================= */}
       <div
         className="
@@ -89,21 +89,28 @@ export default function StudentCard({ student }) {
           </div>
         )}
 
-        {/* Subtle image tone */}
+        {/* =====================================================
+            VERY SUBTLE IMAGE TONE
+        ===================================================== */}
         <div
           className="
             pointer-events-none
             absolute
             inset-0
-            bg-[#766653]/[0.025]
+            bg-[#766653]/[0.02]
             mix-blend-multiply
           "
         />
 
         {/* =====================================================
-            BROAD PHOTO FADE
+            SHORT PHOTO FADE
 
-            This prevents a hard image-to-paper transition.
+            IMPORTANT:
+            The previous fade was too tall.
+
+            This is intentionally restricted to the very
+            bottom of the photograph so the upper ~75% of
+            the image remains clear.
         ===================================================== */}
         <div
           className="
@@ -111,62 +118,69 @@ export default function StudentCard({ student }) {
             absolute
             inset-x-0
             bottom-0
-            h-[38%]
+            h-[24%]
             bg-gradient-to-t
             from-[#f1ede7]
-            via-[#f1ede7]/70
+            via-[#f1ede7]/45
             to-transparent
           "
         />
 
-        {/* Uneven left fade */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            bottom-[-12px]
-            left-[-10%]
-            h-24
-            w-[48%]
-            rounded-full
-            bg-[#f1ede7]/50
-            blur-2xl
-          "
-        />
+        {/* =====================================================
+            SMALL ORGANIC FADE AREAS
 
-        {/* Uneven middle fade */}
+            These stay very close to the torn edge.
+            They do NOT travel upward through the photo.
+        ===================================================== */}
+
+        {/* Left */}
         <div
           className="
             pointer-events-none
             absolute
-            bottom-[-15px]
-            left-[28%]
-            h-28
-            w-[44%]
+            bottom-[-8px]
+            left-[-12%]
+            h-12
+            w-[42%]
             rounded-full
             bg-[#f1ede7]/35
-            blur-3xl
+            blur-xl
           "
         />
 
-        {/* Uneven right fade */}
+        {/* Center */}
         <div
           className="
             pointer-events-none
             absolute
-            bottom-[-12px]
-            right-[-10%]
-            h-24
-            w-[48%]
+            bottom-[-8px]
+            left-[30%]
+            h-14
+            w-[40%]
             rounded-full
-            bg-[#f1ede7]/50
-            blur-2xl
+            bg-[#f1ede7]/25
+            blur-xl
+          "
+        />
+
+        {/* Right */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            bottom-[-8px]
+            right-[-12%]
+            h-12
+            w-[42%]
+            rounded-full
+            bg-[#f1ede7]/35
+            blur-xl
           "
         />
       </div>
 
       {/* =========================================================
-          PAPER SECTION
+          PAPER INFORMATION SECTION
       ========================================================= */}
       <div
         className="
@@ -180,10 +194,7 @@ export default function StudentCard({ student }) {
         "
       >
         {/* =====================================================
-            REAL TORN PAPER IMAGE
-
-            The PNG is intentionally wider than the card so
-            there can be no visible side edge.
+            REAL TORN PAPER PNG
         ===================================================== */}
         <img
           src={tornPaper}
@@ -204,13 +215,10 @@ export default function StudentCard({ student }) {
         />
 
         {/* =====================================================
-            PAPER BLEND
+            SOFT PAPER BLEND
 
-            This is the important fix.
-
-            A very soft paper-colored gradient sits over the
-            bottom of the PNG. It hides the rectangular lower
-            boundary while leaving the torn edge untouched.
+            This blends the lower portion of the PNG into the
+            paper without creating another cloud above it.
         ===================================================== */}
         <div
           aria-hidden="true"
@@ -224,7 +232,7 @@ export default function StudentCard({ student }) {
             h-[18px]
             bg-gradient-to-b
             from-transparent
-            via-[#f1ede7]/55
+            via-[#f1ede7]/45
             to-[#f1ede7]
           "
         />
@@ -269,7 +277,7 @@ export default function StudentCard({ student }) {
             {student.name}
           </h3>
 
-          {/* Roll */}
+          {/* Roll Number */}
           <p
             className="
               mt-1
@@ -281,7 +289,7 @@ export default function StudentCard({ student }) {
             {student.roll_number || 'MCA Scholar'}
           </p>
 
-          {/* Bio */}
+          {/* Description */}
           <p
             className="
               mx-auto
@@ -297,7 +305,9 @@ export default function StudentCard({ student }) {
             {bio || 'Postgraduate Scholar at St. Berchmans College'}
           </p>
 
-          {/* Social links */}
+          {/* =====================================================
+              SOCIAL LINKS
+          ===================================================== */}
           {(student.linkedin_url || student.github_url) && (
             <div
               className="
@@ -374,7 +384,9 @@ export default function StudentCard({ student }) {
             </div>
           )}
 
-          {/* Profile */}
+          {/* =====================================================
+              VIEW PROFILE
+          ===================================================== */}
           <Link
             to={`/students/${student.id}`}
             className="
