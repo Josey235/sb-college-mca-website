@@ -136,24 +136,12 @@ export default function FacultyCard({ faculty }) {
         />
 
         {/* =====================================================
-            CLEAN PHOTO → PAPER FADE
+            NO CLOUD / WHITE FADE
 
-            No blurred cloud effects.
-            The real torn-paper PNG handles the edge.
+            The previous bottom gradient has been completely
+            removed. The natural torn-paper PNG now creates
+            the transition between the photograph and paper.
         ===================================================== */}
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-x-0
-            bottom-0
-            h-[32%]
-            bg-gradient-to-t
-            from-[#f1ede7]
-            via-[#f1ede7]/55
-            to-transparent
-          "
-        />
       </div>
 
       {/* =========================================================
@@ -191,27 +179,11 @@ export default function FacultyCard({ faculty }) {
         />
 
         {/* =====================================================
-            SOFT PAPER BLEND
+            NO ADDITIONAL PAPER BLEND
 
-            This only blends the lower part of the PNG.
-            It does NOT create a cloud effect.
+            Removed the previous gradient layer so there is
+            no artificial white/cloud effect beneath the tear.
         ===================================================== */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none
-            absolute
-            left-0
-            right-0
-            top-[15px]
-            z-[25]
-            h-[18px]
-            bg-gradient-to-b
-            from-transparent
-            via-[#f1ede7]/45
-            to-[#f1ede7]
-          "
-        />
 
         {/* =====================================================
             FACULTY INFORMATION
