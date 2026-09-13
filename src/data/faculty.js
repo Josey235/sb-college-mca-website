@@ -22,7 +22,7 @@ export const facultyMembers = [
     name: "Mrs. Rini Elizabeth Jacob",
     title: "Ms.",
     designation: "Assistant Professor",
-    role: "Tutor",
+    role: "Mentor",
     isHOD: false,
     isTutor: true,
     department: "Computer Science",
