@@ -11,27 +11,19 @@ import {
 
 import collegeLogo from '../assets/images/college/logo.png';
 
-/* ─────────────────────────────────────────────
-   Academics dropdown items
-──────────────────────────────────────────────── */
 const ACADEMICS_CHILDREN = [
   {
     name: 'Syllabus',
     path: '/academics',
     icon: BookOpen,
-    
   },
   {
     name: 'Previous Year Question Papers',
     path: '/academics/question-papers',
     icon: FileText,
-    
   },
 ];
 
-/* ─────────────────────────────────────────────
-   Desktop Academics dropdown
-──────────────────────────────────────────────── */
 function AcademicsDropdown({ isAcademicsActive }) {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -43,12 +35,13 @@ function AcademicsDropdown({ isAcademicsActive }) {
   };
 
   const closeDropdown = () => {
-    // small delay so moving between trigger → menu doesn't flicker
+    clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => setOpen(false), 80);
   };
 
-  // Clean up on unmount
-  useEffect(() => () => clearTimeout(closeTimer.current), []);
+  useEffect(() => {
+    return () => clearTimeout(closeTimer.current);
+  }, []);
 
   return (
     <div
@@ -57,7 +50,6 @@ function AcademicsDropdown({ isAcademicsActive }) {
       onMouseEnter={openDropdown}
       onMouseLeave={closeDropdown}
     >
-      {/* Trigger */}
       <button
         type="button"
         className={`
@@ -66,29 +58,38 @@ function AcademicsDropdown({ isAcademicsActive }) {
           text-xs font-medium
           transition-colors duration-200
           xl:px-3 xl:text-sm
-          ${isAcademicsActive ? 'text-[#e08a5b]' : 'text-stone-300 hover:text-white'}
+          ${
+            isAcademicsActive
+              ? 'text-[#e08a5b]'
+              : 'text-stone-300 hover:text-white'
+          }
         `}
         aria-haspopup="true"
         aria-expanded={open}
       >
         Academics
+
         <ChevronDown
-          className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`h-3.5 w-3.5 transition-transform duration-200 ${
+            open ? 'rotate-180' : ''
+          }`}
         />
 
-        {/* Active underline — matches other nav links */}
         <span
           className={`
             absolute -bottom-0.5 left-2.5 right-2.5
             h-px origin-center bg-[#c9784d]
             transition-transform duration-200
             xl:left-3 xl:right-3
-            ${isAcademicsActive ? 'scale-x-100' : 'scale-x-0'}
+            ${
+              isAcademicsActive
+                ? 'scale-x-100'
+                : 'scale-x-0'
+            }
           `}
         />
       </button>
 
-      {/* Dropdown panel */}
       {open && (
         <div
           className="
@@ -104,12 +105,12 @@ function AcademicsDropdown({ isAcademicsActive }) {
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
         >
-          {/* Top accent bar */}
           <div className="h-0.5 w-full bg-gradient-to-r from-[#c9784d] to-transparent" />
 
           <div className="p-1.5">
             {ACADEMICS_CHILDREN.map((item) => {
               const Icon = item.icon;
+
               return (
                 <NavLink
                   key={item.path}
@@ -119,9 +120,10 @@ function AcademicsDropdown({ isAcademicsActive }) {
                     group flex items-start gap-3
                     rounded-lg px-3 py-2.5
                     transition-colors duration-150
-                    ${isActive
-                      ? 'bg-[#c9784d]/15 text-[#e08a5b]'
-                      : 'text-stone-300 hover:bg-white/[0.05] hover:text-white'
+                    ${
+                      isActive
+                        ? 'bg-[#c9784d]/15 text-[#e08a5b]'
+                        : 'text-stone-300 hover:bg-white/[0.05] hover:text-white'
                     }
                   `}
                 >
@@ -131,15 +133,21 @@ function AcademicsDropdown({ isAcademicsActive }) {
                         className={`
                           mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center
                           rounded-md transition-colors duration-150
-                          ${isActive ? 'bg-[#c9784d]/20 text-[#e08a5b]' : 'bg-white/[0.05] text-stone-400 group-hover:bg-[#c9784d]/10 group-hover:text-[#e08a5b]'}
+                          ${
+                            isActive
+                              ? 'bg-[#c9784d]/20 text-[#e08a5b]'
+                              : 'bg-white/[0.05] text-stone-400 group-hover:bg-[#c9784d]/10 group-hover:text-[#e08a5b]'
+                          }
                         `}
                       >
                         <Icon className="h-3.5 w-3.5" />
                       </span>
+
                       <div className="min-w-0">
                         <p className="text-xs font-semibold leading-tight xl:text-[13px]">
                           {item.name}
                         </p>
+
                         <p className="mt-0.5 text-[10px] leading-snug text-stone-500 xl:text-[11px]">
                           {item.description}
                         </p>
@@ -156,9 +164,6 @@ function AcademicsDropdown({ isAcademicsActive }) {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Main Navbar
-──────────────────────────────────────────────── */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileAcademicsOpen, setMobileAcademicsOpen] = useState(false);
@@ -169,17 +174,17 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route navigation
   useEffect(() => {
     setIsOpen(false);
     setMobileAcademicsOpen(false);
   }, [location.pathname]);
 
-  // Whether any academics sub-route is active
   const isAcademicsActive =
     location.pathname === '/academics' ||
     location.pathname.startsWith('/academics/');
@@ -189,7 +194,6 @@ export default function Navbar() {
     { name: 'About', path: '/about' },
     { name: 'Faculty', path: '/faculty' },
     { name: 'Students', path: '/students' },
-    // 'Academics' is rendered separately as a dropdown
     { name: 'Projects', path: '/projects' },
     { name: 'Events', path: '/events' },
     { name: 'Gallery', path: '/gallery' },
@@ -198,15 +202,16 @@ export default function Navbar() {
 
   return (
     <>
-      {/* =========================================================
-          MAIN NAVBAR
-      ========================================================== */}
       <header
         className={`sticky top-0 z-50 border-b border-[#302a25] bg-[#171411] text-white transition-all duration-300 ${
-          scrolled ? 'shadow-[0_8px_30px_rgba(20,17,15,0.28)]' : ''
+          scrolled
+            ? 'shadow-[0_8px_30px_rgba(20,17,15,0.28)]'
+            : ''
         }`}
       >
-        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+        {/* Slightly wider content area:
+            logo moves left and navigation moves right */}
+        <div className="mx-auto max-w-[1295px] px-5 sm:px-6 lg:px-8">
 
           <div
             className={`flex items-center justify-between transition-all duration-300 ${
@@ -214,24 +219,26 @@ export default function Navbar() {
             }`}
           >
 
-            {/* =====================================================
-                COLLEGE & DEPARTMENT IDENTITY
-            ====================================================== */}
+            {/* College Identity */}
             <Link
               to="/"
               className="group flex min-w-0 items-center gap-3.5"
             >
-
-              {/* College Logo */}
               <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center sm:h-14 sm:w-14">
                 <img
                   src={collegeLogo}
                   alt="St. Berchmans College"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="
+                    h-full
+                    w-full
+                    object-contain
+                    transition-transform
+                    duration-300
+                    group-hover:scale-105
+                  "
                 />
               </div>
 
-              {/* College Name */}
               <div className="min-w-0">
                 <span
                   className="
@@ -260,16 +267,11 @@ export default function Navbar() {
                   Department of Computer Applications (MCA)
                 </p>
               </div>
-
             </Link>
 
-
-            {/* =====================================================
-                DESKTOP NAVIGATION
-            ====================================================== */}
+            {/* Desktop Navigation */}
             <nav className="hidden items-center gap-0.5 lg:flex">
 
-              {/* Home, About, Faculty, Students */}
               {navLinks.slice(0, 4).map((link) => (
                 <NavLink
                   key={link.name}
@@ -297,7 +299,7 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
                       {link.name}
-                      {/* Active underline */}
+
                       <span
                         className={`
                           absolute
@@ -311,7 +313,11 @@ export default function Navbar() {
                           duration-200
                           xl:left-3
                           xl:right-3
-                          ${isActive ? 'scale-x-100' : 'scale-x-0'}
+                          ${
+                            isActive
+                              ? 'scale-x-100'
+                              : 'scale-x-0'
+                          }
                         `}
                       />
                     </>
@@ -319,10 +325,10 @@ export default function Navbar() {
                 </NavLink>
               ))}
 
-              {/* ── Academics dropdown ── */}
-              <AcademicsDropdown isAcademicsActive={isAcademicsActive} />
+              <AcademicsDropdown
+                isAcademicsActive={isAcademicsActive}
+              />
 
-              {/* Projects, Events, Gallery, Contact */}
               {navLinks.slice(4).map((link) => (
                 <NavLink
                   key={link.name}
@@ -349,6 +355,7 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
                       {link.name}
+
                       <span
                         className={`
                           absolute
@@ -362,20 +369,20 @@ export default function Navbar() {
                           duration-200
                           xl:left-3
                           xl:right-3
-                          ${isActive ? 'scale-x-100' : 'scale-x-0'}
+                          ${
+                            isActive
+                              ? 'scale-x-100'
+                              : 'scale-x-0'
+                          }
                         `}
                       />
                     </>
                   )}
                 </NavLink>
               ))}
-
             </nav>
 
-
-            {/* =====================================================
-                MOBILE MENU BUTTON
-            ====================================================== */}
+            {/* Mobile Menu */}
             <div className="flex lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -402,15 +409,10 @@ export default function Navbar() {
                 )}
               </button>
             </div>
-
           </div>
-
         </div>
 
-
-        {/* =========================================================
-            MOBILE DRAWER
-        ========================================================== */}
+        {/* Mobile Drawer */}
         {isOpen && (
           <div
             className="
@@ -426,7 +428,6 @@ export default function Navbar() {
           >
             <div className="space-y-1">
 
-              {/* Home, About, Faculty, Students */}
               {navLinks.slice(0, 4).map((link) => (
                 <NavLink
                   key={link.name}
@@ -455,11 +456,12 @@ export default function Navbar() {
                 </NavLink>
               ))}
 
-              {/* ── Mobile Academics accordion ── */}
               <div>
                 <button
                   type="button"
-                  onClick={() => setMobileAcademicsOpen((v) => !v)}
+                  onClick={() =>
+                    setMobileAcademicsOpen((v) => !v)
+                  }
                   className={`
                     flex w-full items-center justify-between
                     rounded-lg px-4 py-3
@@ -472,18 +474,21 @@ export default function Navbar() {
                   `}
                 >
                   Academics
+
                   <ChevronDown
                     className={`h-4 w-4 transition-transform duration-200 ${
-                      mobileAcademicsOpen ? 'rotate-180' : ''
+                      mobileAcademicsOpen
+                        ? 'rotate-180'
+                        : ''
                     }`}
                   />
                 </button>
 
-                {/* Mobile sub-items */}
                 {mobileAcademicsOpen && (
                   <div className="ml-4 mt-1 space-y-0.5 border-l border-[#302a25] pl-3">
                     {ACADEMICS_CHILDREN.map((item) => {
                       const Icon = item.icon;
+
                       return (
                         <NavLink
                           key={item.path}
@@ -509,7 +514,6 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Projects, Events, Gallery, Contact */}
               {navLinks.slice(4).map((link) => (
                 <NavLink
                   key={link.name}
@@ -536,13 +540,9 @@ export default function Navbar() {
                   {link.name}
                 </NavLink>
               ))}
-
             </div>
 
-
-            {/* Mobile Student Button */}
             <div className="mt-4 border-t border-[#302a25] pt-4">
-
               <Link
                 to="/students"
                 className="
@@ -562,18 +562,12 @@ export default function Navbar() {
                   hover:bg-[#b96843]
                 "
               >
-
                 <GraduationCap className="h-4 w-4" />
-
                 MCA Students (Batch 2026–2028)
-
               </Link>
-
             </div>
-
           </div>
         )}
-
       </header>
     </>
   );
