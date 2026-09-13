@@ -83,7 +83,7 @@ export const timetableInfo = {
     { code: "AM", name: "Mrs. Aswathy Manoharan", role: "Assistant Professor" },
     { code: "PV", name: "Mrs. P. Vijaya Lakshmi", role: "Faculty Member" },
     { code: "SVB", name: "Mr. Sachin Varghese Biju", role: "Assistant Professor" },
-    { code: "ABB", name: "Faculty member as represented in the timetable", role: "Faculty Member" },
+    { code: "ABB", name: "Ms.Annu Bindu Binoy", role: "Faculty Member" },
     { code: "SHARON", name: "Faculty member as represented in the timetable", role: "Faculty Member" }
   ]
 };
