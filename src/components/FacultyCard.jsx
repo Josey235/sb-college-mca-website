@@ -44,19 +44,19 @@ export default function FacultyCard({ faculty }) {
         isPlaceholder
           ? `
             border-dashed
-            border-slate-300
-            bg-slate-50/70
+            border-[#d3cbc0]
+            bg-[#f1ede7]
           `
           : `
-            border-slate-200
-            bg-white
-            shadow-[0_8px_30px_rgba(15,23,42,0.08)]
-            hover:shadow-[0_22px_50px_rgba(15,23,42,0.14)]
+            border-[#d3cbc0]
+            bg-[#f1ede7]
+            shadow-[0_8px_30px_rgba(72,61,49,0.10)]
+            hover:shadow-[0_22px_50px_rgba(72,61,49,0.17)]
           `
       }`}
     >
       {/* =========================================================
-          PHOTO
+          PHOTO SECTION
       ========================================================= */}
       <div
         className="
@@ -94,9 +94,7 @@ export default function FacultyCard({ faculty }) {
               flex
               items-center
               justify-center
-              bg-gradient-to-br
-              from-academic-50
-              to-academic-100
+              bg-[#ded7cd]
             "
           >
             <div
@@ -107,7 +105,7 @@ export default function FacultyCard({ faculty }) {
                 items-center
                 justify-center
                 rounded-full
-                bg-white
+                bg-[#f1ede7]
               "
             >
               <span
@@ -115,7 +113,7 @@ export default function FacultyCard({ faculty }) {
                   font-display
                   text-3xl
                   font-bold
-                  text-academic-800
+                  text-[#6f6254]
                 "
               >
                 {getInitials(faculty.name)}
@@ -124,7 +122,9 @@ export default function FacultyCard({ faculty }) {
           </div>
         )}
 
-        {/* Subtle image tone */}
+        {/* =====================================================
+            SUBTLE PHOTO TONE
+        ===================================================== */}
         <div
           className="
             pointer-events-none
@@ -136,7 +136,9 @@ export default function FacultyCard({ faculty }) {
         />
 
         {/* =====================================================
-            BROAD PHOTO FADE
+            SOFT PHOTO → PAPER FADE
+
+            Same paper color as the details section.
         ===================================================== */}
         <div
           className="
@@ -146,13 +148,13 @@ export default function FacultyCard({ faculty }) {
             bottom-0
             h-[38%]
             bg-gradient-to-t
-            from-white
-            via-white/70
+            from-[#f1ede7]
+            via-[#f1ede7]/70
             to-transparent
           "
         />
 
-        {/* Uneven left fade */}
+        {/* Left organic fade */}
         <div
           className="
             pointer-events-none
@@ -162,12 +164,12 @@ export default function FacultyCard({ faculty }) {
             h-24
             w-[48%]
             rounded-full
-            bg-white/50
+            bg-[#f1ede7]/50
             blur-2xl
           "
         />
 
-        {/* Uneven center fade */}
+        {/* Center organic fade */}
         <div
           className="
             pointer-events-none
@@ -177,12 +179,12 @@ export default function FacultyCard({ faculty }) {
             h-28
             w-[44%]
             rounded-full
-            bg-white/35
+            bg-[#f1ede7]/35
             blur-3xl
           "
         />
 
-        {/* Uneven right fade */}
+        {/* Right organic fade */}
         <div
           className="
             pointer-events-none
@@ -192,26 +194,32 @@ export default function FacultyCard({ faculty }) {
             h-24
             w-[48%]
             rounded-full
-            bg-white/50
+            bg-[#f1ede7]/50
             blur-2xl
           "
         />
       </div>
 
       {/* =========================================================
-          PAPER SECTION
+          PAPER INFORMATION SECTION
+
+          IMPORTANT:
+          This is now the SAME warm paper color used by
+          StudentCard.
       ========================================================= */}
       <div
         className="
           relative
           z-10
-          bg-white
+          bg-[#f1ede7]
           px-5
           pb-5
           pt-[31px]
         "
       >
-        {/* Real torn paper */}
+        {/* =====================================================
+            REAL TORN PAPER PNG
+        ===================================================== */}
         <img
           src={tornPaper}
           alt=""
@@ -231,9 +239,11 @@ export default function FacultyCard({ faculty }) {
         />
 
         {/* =====================================================
-            PAPER BLEND
+            BLEND THE PNG INTO THE PAPER
 
-            Hides the rectangular bottom boundary of the PNG.
+            Same exact color as the paper.
+            This prevents the rectangular edge of the PNG
+            from becoming visible.
         ===================================================== */}
         <div
           aria-hidden="true"
@@ -247,17 +257,19 @@ export default function FacultyCard({ faculty }) {
             h-[18px]
             bg-gradient-to-b
             from-transparent
-            via-white/55
-            to-white
+            via-[#f1ede7]/55
+            to-[#f1ede7]
           "
         />
 
         {/* =====================================================
-            FACULTY CONTENT
+            FACULTY INFORMATION
         ===================================================== */}
         <div className="relative z-30 text-center">
 
-          {/* Role */}
+          {/* ===================================================
+              ROLE BADGE
+          =================================================== */}
           <div
             className="
               mb-1.5
@@ -342,36 +354,42 @@ export default function FacultyCard({ faculty }) {
             )}
           </div>
 
-          {/* Name */}
+          {/* ===================================================
+              NAME
+          =================================================== */}
           <h3
             className={`mt-2 font-display text-lg font-bold leading-snug ${
               isPlaceholder
-                ? 'text-slate-400'
-                : 'text-navy-900'
+                ? 'text-[#9a8d7e]'
+                : 'text-[#40382f]'
             }`}
           >
             {faculty.name}
           </h3>
 
-          {/* Designation */}
+          {/* ===================================================
+              DESIGNATION
+          =================================================== */}
           <p
             className="
               mt-1
               text-xs
               font-semibold
-              text-academic-700
+              text-[#a0643c]
             "
           >
             {faculty.designation}
           </p>
 
-          {/* Department + Qualification */}
+          {/* ===================================================
+              DEPARTMENT + QUALIFICATION
+          =================================================== */}
           <div
             className="
               mt-3
               space-y-1.5
               border-t
-              border-slate-100
+              border-[#ddd4c8]
               pt-3
               text-left
             "
@@ -383,7 +401,7 @@ export default function FacultyCard({ faculty }) {
                   items-center
                   gap-2
                   text-xs
-                  text-slate-600
+                  text-[#756b60]
                 "
               >
                 <Building
@@ -391,7 +409,7 @@ export default function FacultyCard({ faculty }) {
                     h-3.5
                     w-3.5
                     shrink-0
-                    text-academic-500
+                    text-[#c2764d]
                   "
                 />
 
@@ -408,7 +426,7 @@ export default function FacultyCard({ faculty }) {
                   items-center
                   gap-2
                   text-xs
-                  text-slate-600
+                  text-[#756b60]
                 "
               >
                 <GraduationCap
@@ -416,7 +434,7 @@ export default function FacultyCard({ faculty }) {
                     h-3.5
                     w-3.5
                     shrink-0
-                    text-academic-500
+                    text-[#c2764d]
                   "
                 />
 
@@ -424,7 +442,7 @@ export default function FacultyCard({ faculty }) {
                   className="
                     truncate
                     font-medium
-                    text-slate-700
+                    text-[#5f574f]
                   "
                 >
                   {faculty.qualification}
@@ -441,8 +459,8 @@ export default function FacultyCard({ faculty }) {
       <div
         className="
           border-t
-          border-slate-100
-          bg-slate-50/60
+          border-[#ddd4c8]
+          bg-[#ebe5dc]
           px-5
           py-2.5
           text-center
@@ -457,9 +475,9 @@ export default function FacultyCard({ faculty }) {
               items-center
               gap-1.5
               font-medium
-              text-academic-700
+              text-[#a0643c]
               transition-colors
-              hover:text-academic-900
+              hover:text-[#79543c]
               hover:underline
             "
             title={`Email ${faculty.name}`}
@@ -469,7 +487,7 @@ export default function FacultyCard({ faculty }) {
                 h-3.5
                 w-3.5
                 shrink-0
-                text-academic-600
+                text-[#c2764d]
               "
             />
 
@@ -478,11 +496,11 @@ export default function FacultyCard({ faculty }) {
             </span>
           </a>
         ) : isPlaceholder ? (
-          <span className="text-slate-400">
+          <span className="text-[#9a8d7e]">
             Profile will be updated soon
           </span>
         ) : (
-          <span className="font-medium text-academic-600">
+          <span className="font-medium text-[#a0643c]">
             St. Berchmans College
           </span>
         )}
