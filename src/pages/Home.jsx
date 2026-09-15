@@ -131,7 +131,9 @@ export default function Home() {
 
             <div className="max-w-2xl space-y-5">
 
-              <p className="font-serif text-lg leading-relaxed text-[#62574c] sm:text-xl">
+               
+              <p className="font-serif text-base leading-relaxed text-[#62574c] sm:text-lg">
+             
                 The Master of Computer Applications (MCA) programme at{' '}
                 <strong className="font-semibold text-[#40382f]">
                   St. Berchmans College, Changanassery
@@ -147,7 +149,7 @@ export default function Home() {
                 represents the first batch of the programme.
               </p>
 
-              <p className="text-[15px] leading-7 text-[#796b5c] sm:text-base">
+              <p className="font-serif text-base leading-relaxed text-[#62574c] sm:text-lg">
                 The department is led by{' '}
                 <strong className="font-semibold text-[#51463b]">
                   Mrs. Smitha Krishnan
