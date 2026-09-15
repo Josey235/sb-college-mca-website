@@ -110,16 +110,12 @@ export default function PageHero({
 
           {/* =================================================
               HEADING
-
-              Explicit text-white prevents global heading
-              styles from changing the title color.
           ================================================= */}
           <h1
             className="
-              text-3xl
-              font-extrabold
-              leading-tight
-              font-display
+              text-4xl
+              leading-none
+              font-serif
               text-white
               sm:text-5xl
             "

@@ -8,6 +8,8 @@ import {
   User,
 } from 'lucide-react';
 
+import PageHero from '../components/PageHero';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -44,112 +46,12 @@ export default function Contact() {
       {/* =========================================================
           HERO HEADER
       ========================================================= */}
-      <section
-        className="
-          relative
-          overflow-hidden
-          border-b border-[#211C19]
-          bg-[#14110F]
-          py-16
-          text-white
-          sm:py-20
-        "
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              rgba(255, 255, 255, 0.07) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.07) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              rgba(255, 255, 255, 0.018) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.018) 1px,
-              transparent 1px
-            )
-          `,
-          backgroundSize: `
-            74px 74px,
-            74px 74px,
-            148px 148px,
-            148px 148px
-          `,
-          backgroundPosition: `
-            0 0,
-            0 0,
-            0 0,
-            0 0
-          `,
-        }}
-      >
-
-        {/* Soft Glow Over Grid */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(circle at 50% 45%, rgba(201, 111, 69, 0.055), transparent 65%)',
-          }}
-        />
-
-        {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-
-        {/* Hero Content */}
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          <div className="max-w-3xl space-y-3">
-
-            {/* Badge */}
-            <span
-              className="
-                inline-flex
-                rounded-full
-                border border-[#C96F45]/40
-                bg-[#C96F45]/20
-                px-3.5
-                py-1
-                text-xs
-                font-semibold
-                text-[#E08A5B]
-              "
-            >
-              Department Communications
-            </span>
-
-            {/* Heading */}
-            <h1
-              className="
-                font-display
-                text-3xl
-                font-extrabold
-                leading-tight
-                sm:text-5xl
-              "
-            >
-              Contact{' '}
-              <span className="text-[#C96F45]">
-                Department
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
-              Reach out to the Department of Computer Applications at
-              St. Berchmans College, Changanassery.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
+      <PageHero
+        badge="Department Communications"
+        title="Contact"
+        highlight="Department"
+        description="Reach out to the Department of Computer Applications at St. Berchmans College, Changanassery."
+      />
 
 
       {/* =========================================================
@@ -172,7 +74,7 @@ export default function Contact() {
                   Official Details
                 </span>
 
-                <h2 className="mt-1 font-display text-xl font-bold text-[#14110F]">
+                <h2 className="mt-1 font-serif text-xl font-bold text-[#14110F]">
                   Department of Computer Applications (MCA)
                 </h2>
 
@@ -293,7 +195,7 @@ export default function Contact() {
                   Enquiry Form
                 </span>
 
-                <h2 className="mt-2 font-display text-2xl font-bold text-[#14110F]">
+                <h2 className="mt-2 font-serif text-2xl font-bold text-[#14110F]">
                   Send a Message
                 </h2>
 
@@ -313,7 +215,7 @@ export default function Contact() {
                     <CheckCircle2 className="h-8 w-8" />
                   </div>
 
-                  <h3 className="font-display text-lg font-bold text-emerald-950">
+                  <h3 className="font-serif text-lg font-bold text-emerald-950">
                     Thank You! Message Received
                   </h3>
 
@@ -517,7 +419,7 @@ export default function Contact() {
                 Location Map
               </span>
 
-              <h2 className="font-display text-xl font-bold text-[#14110F]">
+              <h2 className="font-serif text-xl font-bold text-[#14110F]">
                 St. Berchmans College, Changanassery
               </h2>
 
